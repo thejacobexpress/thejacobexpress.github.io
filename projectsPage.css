@@ -1,0 +1,26 @@
+.navbar {
+    margin: auto;
+}
+.navbar ul {
+    list-style-type: none;
+    background-color: black;
+    margin: 0;
+    overflow: hidden;
+    text-align: center;
+}
+.navbar li {
+    display: inline-block;
+}
+.navbar a {
+    float: left;
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    display: block;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 17px;
+}
+.navbar a:hover {
+    text-decoration: underline;
+}
