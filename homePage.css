@@ -99,7 +99,7 @@
     z-index: 1;
 
     animation-name: bounceIn;
-    animation-delay: 4s;
+    animation-delay: 4.5s;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
@@ -116,7 +116,7 @@
     z-index: 1;
 
     animation-name: bounceIn;
-    animation-delay: 4s;
+    animation-delay: 5s;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
