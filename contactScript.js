@@ -1,4 +1,4 @@
-const elements = document.querySelectorAll('.projectsText');
+const elements = document.querySelectorAll('.emailText');
 const options = {
   root: null,
   rootMargin: '0px',
@@ -7,7 +7,7 @@ const options = {
 const callbacks = (entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting){
-      entry.target.classList.add('transitionUp');
+      entry.target.classList.add('transition');
     }
   });
 }
