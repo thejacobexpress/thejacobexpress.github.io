@@ -1,5 +1,6 @@
 html {
     overflow-x: hidden;
+    overflow-anchor: none;
 }
 
 .navbar {
@@ -125,6 +126,85 @@ html {
     animation-fill-mode: forwards;
 }
 
+.aboutDiv {
+    margin-top: 100px;
+    padding-top: 10px;
+    padding-bottom: 100px;
+    text-align: center;
+
+    background-color: #dbffde;
+}
+.aboutText {
+    opacity: 0;
+    position: relative;
+    color: black;
+    font-size: 100px;
+    font-family: Roboto;
+}
+
+.aboutSectionDiv {
+    padding-top: 30px;
+    margin: auto;
+    width: 70%;
+    text-align: center;
+    overflow: hidden;
+}
+.aboutImageDiv {
+    display: inline-block;
+}
+.aboutImage {
+    opacity: 0;
+    width: 400px;
+    border-radius: 10%;
+}
+.aboutContainerDiv {
+    display: inline-block;
+    height: auto;
+    padding-bottom: 50px;
+    width: 50%;
+}
+.aboutParagraphDiv {
+    display: inline-block;
+    padding: 50px;
+    padding-bottom: 80px;
+    vertical-align: bottom;
+    width: 80%;
+}
+.aboutParagraph {
+    opacity: 0;
+    font-size: 30px;
+    font-family: Roboto;
+    color: #616161;
+}
+
+.aboutButtonDiv {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+.aboutButton {
+    position: relative;
+    color: black;
+    font-size: 20px;
+    font-family: Roboto;
+
+    appearance: button;
+    -webkit-appearance: none;
+    text-decoration: none;
+    color: initial;
+    padding: 15px;
+    border: 3px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 100px;
+    background-color: white;
+}
+.aboutButton:hover {
+    animation-name: hoverButton;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
 .projectsDiv {
     margin-top: 100px;
     padding-top: 10px;
@@ -242,10 +322,20 @@ html {
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
+.transitionLeft {
+    animation-name: transitionLeft;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.transitionRight {
+    animation-name: transitionRight;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
 
 @keyframes hoverButton {
     to {
-        background-color: #e8e8e8;
+        background-color: #efefef;
     }
 }
 
@@ -294,6 +384,17 @@ html {
     }
 }
 
+@keyframes transitionUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
 @keyframes transitionRight {
     from {
         opacity: 0;
@@ -302,13 +403,13 @@ html {
 
     to {
         opacity: 1;
-        transform: translate(30px);
+        transform: translate(0px);
     }
 }
-@keyframes transitionUp {
+@keyframes transitionLeft {
     from {
         opacity: 0;
-        transform: translateY(100px);
+        transform: translateX(100px);
     }
 
     to {
