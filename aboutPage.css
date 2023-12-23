@@ -24,3 +24,12 @@
 .navbar a:hover {
     text-decoration: underline;
 }
+
+.comingSoonDiv {
+    margin-top: 300px;
+    text-align: center;
+}
+.comingSoonText {
+    font-family: Roboto;
+    font-size: 100px;
+}

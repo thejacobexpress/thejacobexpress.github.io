@@ -16,6 +16,24 @@ elements.forEach(element => {
   observer.observe(element);
 });
 
+const dElements = document.querySelectorAll('.endText');
+const dOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.9
+}
+const dCallbacks = (entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('transitionDown');
+    }
+  });
+}
+let dObserver = new IntersectionObserver(dCallbacks, dOptions);
+dElements.forEach(element => {
+  dObserver.observe(element);
+});
+
 const lElements = document.querySelectorAll('.aboutParagraph');
 const lOptions = {
   root: null,

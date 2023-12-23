@@ -297,6 +297,18 @@ html {
     animation-fill-mode: both;
 }
 
+.endDiv {
+    margin-top: 200px;
+    text-align: center;
+    margin-bottom: 200px;
+}
+.endText {
+    opacity: 0;
+    color: black;
+    font-size: 100px;
+    font-family: Roboto;
+}
+
 .contactDiv {
     margin-top: 100px;
     padding-top: 10px;
@@ -319,6 +331,11 @@ html {
 
 .transitionUp {
     animation-name: transitionUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.transitionDown {
+    animation-name: transitionDown;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
@@ -388,6 +405,17 @@ html {
     from {
         opacity: 0;
         transform: translateY(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+@keyframes transitionDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
     }
 
     to {

@@ -1,3 +1,8 @@
+html {
+    overflow-x: hidden;
+    overflow-anchor: none;
+}
+
 .navbar {
     margin: auto;
 }
@@ -23,4 +28,353 @@
 }
 .navbar a:hover {
     text-decoration: underline;
+}
+
+.comingSoonDiv {
+    margin-top: 300px;
+    text-align: center;
+}
+.comingSoonText {
+    font-family: Roboto;
+    font-size: 100px;
+}
+
+/* .project1Div {
+    margin: auto;
+    padding-bottom: 100px;
+    text-align: center;
+    background-color: #4b7d596e;
+}
+.project1Container {
+    text-align: center;
+}
+
+.project1TitleDiv {
+    margin-top: 100px;
+    text-align: center;
+}
+.project1Title {
+    width: 100px;
+}
+
+.project1ImageTextDiv1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    overflow: hidden;
+    display: inline-block;
+}
+.project1ImageDiv1 {
+    display: inline-block;
+}
+.project1Image1 {
+    width: 500px;
+    border-radius: 10%;
+}
+.project1TextDiv1 {
+    display: inline-block;
+    padding-bottom: 180px;
+    vertical-align: bottom;
+    width: 30%;
+}
+.project1Text1 {
+    font-family: Roboto;
+    color: black;
+    font-size: 25px;
+}
+
+.project1ImageTextDiv2 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    height: 0;
+    text-align: center;
+    overflow: hidden;
+    display: none;
+}
+.project1ImageDiv2 {
+    display: inline-block;
+}
+.project1Image2 {
+    width: 500px;
+    border-radius: 10%;
+}
+.project1TextDiv2 {
+    display: inline-block;
+    padding-bottom: 180px;
+    vertical-align: bottom;
+    width: 30%;
+}
+.project1Text2 {
+    font-family: Roboto;
+    color: black;
+    font-size: 25px;
+}
+
+.project1ImageTextDiv3 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    height: 0;
+    text-align: center;
+    overflow: hidden;
+    display: inline-block;
+}
+.project1ImageDiv3 {
+    display: inline-block;
+}
+.project1Image3 {
+    width: 500px;
+    border-radius: 10%;
+}
+.project1TextDiv3 {
+    display: inline-block;
+    padding-bottom: 180px;
+    vertical-align: bottom;
+    width: 30%;
+}
+.project1Text3 {
+    font-family: Roboto;
+    color: black;
+    font-size: 25px;
+}
+
+.scrollButtonsDiv {
+    margin-top: 530px;
+    font-size: 0;
+}
+.project1Button1 {
+    background-color: white;
+    border: solid;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 50%;
+    border: 0px;
+}
+.project1Button2 {
+    background-color: white;
+    border: solid;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 50%;
+    border: 0px;
+}
+.project1Button3 {
+    background-color: white;
+    border: solid;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 50%;
+    border: 0px;
+}
+.project1Button1:hover {
+    cursor: pointer;
+    border-width: 0 1px;
+    border: solid #000;
+    margin: 2px;
+}
+.project1Button2:hover {
+    cursor: pointer;
+    border-width: 0 1px;
+    border: solid #000;
+    margin: 2px;
+}
+.project1Button3:hover {
+    cursor: pointer;
+    border-width: 0 1px;
+    border: solid #000;
+    margin: 2px;
+}
+
+.project1GoToDiv {
+    margin-top: 100px;
+}
+.project1GoToButton {
+    position: relative;
+    color: black;
+    font-size: 20px;
+    font-family: Roboto;
+
+    appearance: button;
+    -webkit-appearance: none;
+    text-decoration: none;
+    color: initial;
+    padding: 15px;
+    border: 3px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 100px;
+    background-color: white;
+}
+.project1GoToButton:hover {
+    animation-name: hoverButton;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+} */
+
+.selectButton {
+    animation-name: selectButton;
+    animation-duration: 0s;
+    animation-fill-mode: forwards;
+}
+
+.transitionOutRight {
+    animation-name: transitionOutRight;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.transitionOutLeft {
+    animation-name: transitionOutLeft;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.transitionInRight {
+    animation-name: transitionInRight;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.transitionInLeft {
+    animation-name: transitionInLeft;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes hoverButton {
+    to {
+        background-color: #efefef;
+    }
+}
+
+@keyframes selectButton {
+    to {
+        border-width: 0 1px;
+        border: solid #000;
+        margin: 2px;
+    }
+}
+
+@keyframes transitionOutRight {
+    from {
+        opacity: 1;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateX(0px);
+    }
+
+    99% {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateX(-1000px);
+    }
+
+    to {
+        opacity: 0;
+        height: 0;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: none;
+        position: absolute;
+        transform: translateX(-1000px);
+    }
+}
+@keyframes transitionOutLeft {
+    from {
+        opacity: 1;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        transform: translateX(0px);
+    }
+
+    99% {
+        opacity: 0;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        transform: translateX(1000px);
+    }
+
+    to {
+        opacity: 0;
+        height: 0;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: none;
+        position: absolute;
+        transform: translateX(1000px);
+    }
+}
+
+@keyframes transitionInRight {
+    from {
+        opacity: 0;
+        height: 500px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        transform: translateX(-1000px);
+    }
+
+    to {
+        opacity: 1;
+        height: 500px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: inline-block;
+        position: absolute;
+        transform: translateX(0px);
+    }
+}
+@keyframes transitionInLeft {
+    from {
+        opacity: 0;
+        height: 500px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        position: absolute;
+        transform: translateX(1000px);
+    }
+
+    to {
+        opacity: 1;
+        height: 500px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: inline-block;
+        position: absolute;
+        transform: translateX(0px);
+    }
 }
