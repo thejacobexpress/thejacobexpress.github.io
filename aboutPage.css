@@ -33,3 +33,21 @@
     font-family: Roboto;
     font-size: 100px;
 }
+
+@media only screen and (max-device-width: 500px) {
+    .navbar a {
+        padding: 50px;
+        font-size: 50px;
+    }
+
+    .comingSoonDiv {
+        width: 80%;
+        margin: auto;
+        padding-top: 500px;
+        text-align: center;
+    }
+    .comingSoonText {
+        font-family: Roboto;
+        font-size: 100px;
+    }
+}

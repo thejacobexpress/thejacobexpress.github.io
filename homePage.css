@@ -329,6 +329,190 @@ html {
     font-family: Roboto;
 }
 
+@media only screen and (max-device-width: 500px) {
+    .navbar a {
+        padding: 50px;
+        font-size: 50px;
+    }
+
+    .allAboardDiv {
+        width: 100%;
+        margin: 0;
+        padding-top: 100px;
+        text-align: center;
+    }
+    .allAboardText {
+        white-space: pre;
+
+        position: relative;
+        color: black;
+        font-size: 100px;
+        font-family: Roboto;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 0px;
+        display: inline-block;
+    }
+
+    .topJacobImageDiv1 {
+        margin-top: -90%;
+        margin-left: 5%;
+    }
+    .topJacobImageDiv2 {
+        margin-top: 10%;
+        margin-left: 65%;
+    }
+    .topJacobImageDiv3 {
+        margin-top: 0%;
+        margin-left: 15%;
+        padding-bottom: 200px;
+    }
+
+    .aboutDiv {
+        padding-top: 100px;
+    }
+    .aboutText {
+        margin: auto;
+        width: 80%;
+    }
+    .aboutImage {
+        opacity: 0;
+        width: 600px;
+        border-radius: 10%;
+    }
+    .aboutContainerDiv {
+        display: inline-block;
+        height: auto;
+        padding-bottom: 50px;
+        width: 100%;
+    }
+    .aboutParagraph {
+        opacity: 0;
+        font-size: 50px;
+        font-family: Roboto;
+        color: #616161;
+    }
+    .aboutButton {
+        position: relative;
+        color: black;
+        font-size: 50px;
+        font-family: Roboto;
+    
+        appearance: button;
+        -webkit-appearance: none;
+        text-decoration: none;
+        color: initial;
+        padding: 40px;
+        border: 8px;
+        border-style: solid;
+        border-color: black;
+        border-radius: 100px;
+        background-color: white;
+    }
+
+    .projectsDiv {
+        margin-top: 100px;
+        padding-top: 100px;
+        padding-bottom: 100px;
+        text-align: center;
+    
+        background-color: #ebf8fc;
+    }
+    .projectsText {
+        opacity: 0;
+        width: 80%;
+        margin: auto;
+        position: relative;
+        color: black;
+        font-size: 100px;
+        font-family: Roboto;
+    }
+    .wrapper {
+        width: 80%;
+        margin: auto;
+        margin-top: 120px;
+        padding-top: -200px;
+        text-align: center;
+    }
+    .fromUI {
+        position: relative;
+        color: black;
+        font-size: 90px;
+        font-family: Roboto;
+    }
+    .words {
+        display: inline;
+        text-indent: 20px;
+        margin-right: 0px;
+    
+        color: black;
+        font-size: 90px;
+        font-family: Roboto;
+    }
+    .words span {
+        width: 85%;
+    }
+    .projectsButtonDiv {
+        width: 50%;
+        margin: auto;
+        margin-top: 300px;
+        text-align: center;
+    }
+    .projectsButton {
+        position: relative;
+        color: black;
+        font-size: 50px;
+        font-family: Roboto;
+    
+        appearance: button;
+        -webkit-appearance: none;
+        text-decoration: none;
+        color: initial;
+        padding: 40px;
+        border: 8px;
+        border-style: solid;
+        border-color: black;
+        border-radius: 100px;
+        background-color: white;
+    }
+
+    .endDiv {
+        width: 80%;
+        text-align: center;
+        padding-top: 200px;
+        padding-bottom: 100px;
+        margin: auto;
+    }
+    .endText {
+        opacity: 0;
+        color: black;
+        font-size: 110px;
+        font-family: Roboto;
+    }
+
+    .contactDiv {
+        margin-top: 100px;
+        padding-top: 10px;
+        padding-bottom: 100px;
+        background-color: black;
+        text-align: center;
+    }
+    .getInTouchText {
+        position: relative;
+        padding: 30px;
+        color: white;
+        font-size: 30px;
+        font-family: Roboto;
+    }
+    .contactMeLink {
+        position: relative;
+        color: white;
+        font-size: 30px;
+        font-family: Roboto;
+    }
+}
+
+
 .transitionUp {
     animation-name: transitionUp;
     animation-duration: 1s;
