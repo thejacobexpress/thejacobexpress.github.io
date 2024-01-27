@@ -2,7 +2,7 @@ const elements = document.querySelectorAll('.projectsText, .aboutText');
 const options = {
   root: null,
   rootMargin: '0px',
-  threshold: 0.9
+  threshold: 0.5
 }
 const callbacks = (entries) => {
   entries.forEach(entry => {
@@ -20,7 +20,7 @@ const dElements = document.querySelectorAll('.endText');
 const dOptions = {
   root: null,
   rootMargin: '0px',
-  threshold: 0.9
+  threshold: 0.5
 }
 const dCallbacks = (entries) => {
   entries.forEach(entry => {
@@ -38,7 +38,7 @@ const lElements = document.querySelectorAll('.aboutParagraph');
 const lOptions = {
   root: null,
   rootMargin: '0px',
-  threshold: 0.9
+  threshold: 0.5
 }
 const lCallbacks = (entries) => {
   entries.forEach(entry => {
@@ -56,7 +56,7 @@ const rElements = document.querySelectorAll('.aboutImage');
 const rOptions = {
   root: null,
   rootMargin: '0px',
-  threshold: 0.9
+  threshold: 0.5
 }
 const rCallbacks = (entries) => {
   entries.forEach(entry => {

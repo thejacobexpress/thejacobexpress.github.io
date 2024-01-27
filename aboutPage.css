@@ -34,6 +34,80 @@
     font-size: 100px;
 }
 
+/* .titleContainer {
+    width: 1000px;
+    margin: auto;
+    margin-top: 300px;
+    margin-bottom: 2000px;
+
+    animation-name: fadeUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.jacobDiv {
+    margin: auto;
+    margin-left: 100px;
+    width: 40%;
+    float: left;
+}
+.jacobText {
+    font-family: Roboto;
+    font-size: 70px;
+}
+
+.attributeDiv {
+    overflow: hidden;
+    position: relative;
+    display: inline;
+    width: 45%;
+    height: 150px;
+    margin-right: -200px;
+    float: left;
+}
+.attributeContainer {
+    position: relative;
+    margin-top: 48px;
+}
+div.attributeContainer {
+    font-family: Roboto;
+    font-size: 35px;
+}
+.attribute1 {
+    position: absolute;
+    opacity: 1;
+    margin: 0;
+}
+.attribute2 {
+    position: absolute;
+    opacity: 0;
+    margin: 0;
+}
+.attribute3 {
+    position: absolute;
+    opacity: 0;
+    margin: 0;
+}
+
+.scrollDiv {
+    position: relative;
+    width: 100px;
+    margin: auto;
+    text-align: center;
+    opacity: 1;
+}
+.scrollText {
+    font-family: Roboto;
+    font-size: 20px;
+    opacity: 0;
+} */
+
+@media only screen and (max-width: 910px) {
+    .jacobDiv {
+        margin-left: 0;
+    }
+}
+
 @media only screen and (max-device-width: 500px) {
     .navbar a {
         padding: 50px;
@@ -50,4 +124,137 @@
         font-family: Roboto;
         font-size: 100px;
     }
+
+}
+
+.noScroll {
+    width: 99.2%;
+    position: fixed;
+    overflow-y: scroll;
+}
+
+.scrollBump {
+    animation-name: scrollBump;
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+}
+
+.transitionInFromUp {
+    animation-name: transitionInFromUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.transitionInFromDown {
+    animation-name: transitionInFromDown;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.transitionOutToUp {
+    animation-name: transitionOutToUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.transitionOutToDown {
+    animation-name: transitionOutToDown;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes scrollBump {
+    from {
+        opacity: 0;
+        font-family: Roboto;
+        font-size: 20px;
+        transform: translateY(-50px);
+    }
+    50% {
+        opacity: 1;
+        font-family: Roboto;
+        font-size: 20px;
+    }
+    to {
+        opacity: 0;
+        font-family: Roboto;
+        font-size: 20px;
+        transform: translateY(50px);
+    }
+}
+
+@keyframes transitionInFromUp {
+
+    from {
+        position: absolute;
+        opacity: 1;
+        margin: 0;
+        transform: translateY(-300px);
+    }
+
+    to {
+        position: absolute;
+        opacity: 1;
+        transform: translateY(-48px);
+    }
+
+}
+@keyframes transitionInFromDown {
+
+    from {
+        position: absolute;
+        opacity: 1;
+        margin: 0;
+        transform: translateY(300px);
+    }
+
+    to {
+        position: absolute;
+        opacity: 1;
+        margin: 0;
+        transform: translateY(0px);
+    }
+
+}
+@keyframes transitionOutToUp {
+
+    from {
+        position: absolute;
+        opacity: 1;
+        margin: 0;
+        transform: translateY(0px);
+    }
+
+    to {
+        position: absolute;
+        opacity: 1;
+        margin: 0;
+        transform: translateY(300px);
+    }
+
+}
+@keyframes transitionOutToDown {
+
+    from {
+        position: absolute;
+        opacity: 1;
+        margin: 0;
+        transform: translateY(0px);
+    }
+
+    to {
+        position: absolute;
+        opacity: 1;
+        margin: 0;
+        transform: translateY(-300px);
+    }
+
 }
