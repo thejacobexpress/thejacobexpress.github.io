@@ -28,6 +28,10 @@
 .comingSoonDiv {
     margin-top: 300px;
     text-align: center;
+
+    animation-name: fadeUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
 .comingSoonText {
     font-family: Roboto;
@@ -100,13 +104,13 @@ div.attributeContainer {
     font-family: Roboto;
     font-size: 20px;
     opacity: 0;
-} */
+}
 
 @media only screen and (max-width: 910px) {
     .jacobDiv {
         margin-left: 0;
     }
-}
+}*/
 
 @media only screen and (max-device-width: 500px) {
     .navbar a {

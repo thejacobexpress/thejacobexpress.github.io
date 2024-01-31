@@ -394,8 +394,9 @@ html {
     }
     .topJacobImageDiv3 {
         margin-top: 10%;
-        margin-left: -40%;
+        margin-left: 5%;
         padding-bottom: 200px;
+        width: 50%;
     }
 
     .aboutDiv {

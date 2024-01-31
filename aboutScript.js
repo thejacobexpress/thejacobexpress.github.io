@@ -87,6 +87,7 @@
 
 //     if(direction < 0) {
 //         console.log("Scrolling up by " + amount);
+//         scrollTotal += amount;
 //         scrollUp();
 //     }
 
