@@ -1133,7 +1133,7 @@ section.tahomaTSAContent {
 .fadeInDelay15Reverse {
     animation-name: fadeIn;
     animation-duration: 1s;
-    animation-delay: 1s;
+    animation-delay: 3s;
     animation-fill-mode: both;
     animation-direction: reverse;
 }
@@ -1146,7 +1146,7 @@ section.tahomaTSAContent {
 .fadeInDelay3Reverse {
     animation-name: fadeIn;
     animation-duration: 1s;
-    animation-delay: 2s;
+    animation-delay: 1s;
     animation-fill-mode: both;
     animation-direction: reverse;
 }
@@ -1159,7 +1159,7 @@ section.tahomaTSAContent {
 .fadeInDelay45Reverse {
     animation-name: fadeIn;
     animation-duration: 1s;
-    animation-delay: 3s;
+    animation-delay: 0s;
     animation-fill-mode: both;
     animation-direction: reverse;
 }

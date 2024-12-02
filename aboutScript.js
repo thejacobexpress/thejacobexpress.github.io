@@ -322,6 +322,7 @@ function isInViewport(element) {
 }
 
 var seenEntranceAnimation = [false, false, false, false, false, false];
+var isAnimating = [false, false, false, false, false, false];
 const elements = document.querySelectorAll('.notAllDiv, .usgStudiosImageDiv, .usgStudiosGroupImageDiv, .moreText, .roboticsContributorText, .roboticsGroupImgDiv');
 const options = {
   root: null,
@@ -331,7 +332,8 @@ const options = {
 const callbacks = (entries) => {
   entries.forEach(entry => {
     // console.log(seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] + " " + !entry.isIntersecting + " " + isInViewport(entry.target) + " " + lastScrolledUp);
-    if(entry.isIntersecting && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)]){
+    if(entry.isIntersecting && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] &&
+    !isAnimating[Array.from(elements).findIndex(node => node === entry.target)]){
 
         requestAnimationFrame(() => {
             entry.target.classList.remove('fadeUpReverse');
@@ -341,15 +343,34 @@ const callbacks = (entries) => {
         });
 
         seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = true;
-    } else if(seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && !entry.isIntersecting && isInViewport(entry.target) && lastScrolledUp) {
-        seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = false;
+    } else if(seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && 
+    !entry.isIntersecting && isInViewport(entry.target) && lastScrolledUp) {
 
         requestAnimationFrame(() => {
+
             entry.target.classList.remove('fadeUp');
+
             requestAnimationFrame(() => {
                 entry.target.classList.add('fadeUpReverse');
+                isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = true;
+                seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = false;
             });
+
         });
+
+        setTimeout(function() {
+            isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = false;
+            if(isInViewport(entry.target) && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && 
+            !lastScrolledUp) {
+                console.log("ViewPort function!");
+                requestAnimationFrame(() => {
+                    Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.remove('fadeUpReverse');
+                    requestAnimationFrame(() => {
+                        Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.add('fadeUp');
+                    });
+                });
+            }
+        }, 1000);
 
     }
   });
@@ -360,6 +381,7 @@ elements.forEach(element => {
 });
 
 var aSeenEntranceAnimation = false;
+var aIsAnimating = false;
 const aElements = document.querySelectorAll('.usgStudiosImageTextDiv');
 const aOptions = {
   root: null,
@@ -369,7 +391,7 @@ const aOptions = {
 const aCallbacks = (entries) => {
   entries.forEach(entry => {
     // console.log(aSeenEntranceAnimation + " " + !entry.isIntersecting + " " + isInViewport(entry.target) + " " + lastScrolledUp);
-    if(entry.isIntersecting && !aSeenEntranceAnimation){
+    if(entry.isIntersecting && !aSeenEntranceAnimation && !aIsAnimating){
 
         requestAnimationFrame(() => {
             entry.target.classList.remove('fadeInReverse');
@@ -383,11 +405,29 @@ const aCallbacks = (entries) => {
         aSeenEntranceAnimation = false;
 
         requestAnimationFrame(() => {
+
             entry.target.classList.remove('fadeIn');
+
             requestAnimationFrame(() => {
                 entry.target.classList.add('fadeInReverse');
+                aIsAnimating = true;
+                aSeenEntranceAnimation = false;
             });
+
         });
+
+        setTimeout(function() {
+            aIsAnimating = false;
+            if(isInViewport(entry.target) && !aSeenEntranceAnimation && !lastScrolledUp) {
+                console.log("ViewPort function!");
+                requestAnimationFrame(() => {
+                    Array.from(aElements)[0].classList.remove('fadeInReverse');
+                    requestAnimationFrame(() => {
+                        Array.from(aElements)[0].classList.add('fadeIn');
+                    });
+                });
+            }
+        }, 1000);
 
     }
   });
@@ -476,6 +516,7 @@ bElements.forEach(element => {
 });
 
 var cSeenEntranceAnimation = false;
+var cIsAnimating = false;
 const cElements = document.querySelectorAll('.roboticsInText');
 const cOptions = {
   root: null,
@@ -485,7 +526,7 @@ const cOptions = {
 const cCallbacks = (entries) => {
   entries.forEach(entry => {
     // console.log(cSeenEntranceAnimation + " " + !entry.isIntersecting + " " + isInViewport(entry.target) + " " + lastScrolledUp);
-    if(entry.isIntersecting && !cSeenEntranceAnimation){
+    if(entry.isIntersecting && !cSeenEntranceAnimation && !cIsAnimating){
 
         requestAnimationFrame(() => {
             entry.target.classList.remove('fadeInDelay15Reverse');
@@ -499,9 +540,13 @@ const cCallbacks = (entries) => {
         cSeenEntranceAnimation = false;
 
         requestAnimationFrame(() => {
+
             entry.target.classList.remove('fadeInDelay15');
+
             requestAnimationFrame(() => {
                 entry.target.classList.add('fadeInDelay15Reverse');
+                cIsAnimating = true;
+                cSeenEntranceAnimation = false;
             });
         });
 
@@ -514,6 +559,7 @@ cElements.forEach(element => {
 });
 
 var dSeenEntranceAnimation = false;
+var dIsAnimating = false;
 const dElements = document.querySelectorAll('.roboticsTheText');
 const dOptions = {
   root: null,
@@ -523,7 +569,7 @@ const dOptions = {
 const dCallbacks = (entries) => {
   entries.forEach(entry => {
     // console.log(dSeenEntranceAnimation + " " + !entry.isIntersecting + " " + isInViewport(entry.target) + " " + lastScrolledUp);
-    if(entry.isIntersecting && !dSeenEntranceAnimation){
+    if(entry.isIntersecting && !dSeenEntranceAnimation && !dIsAnimating){
 
         requestAnimationFrame(() => {
             entry.target.classList.remove('fadeInDelay3Reverse');
@@ -537,9 +583,13 @@ const dCallbacks = (entries) => {
         dSeenEntranceAnimation = false;
 
         requestAnimationFrame(() => {
+
             entry.target.classList.remove('fadeInDelay3');
+
             requestAnimationFrame(() => {
                 entry.target.classList.add('fadeInDelay3Reverse');
+                dIsAnimating = true;
+                dSeenEntranceAnimation = false;
             });
         });
 
@@ -685,29 +735,21 @@ const gCallbacks = (entries) => {
             }
         }, 1000);
 
+        setTimeout(function() {
+            isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = false;
+            if(isInViewport(entry.target) && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && 
+            !lastScrolledUp) {
+                console.log("ViewPort function!");
+                requestAnimationFrame(() => {
+                    Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.remove('fadeUp');
+                    requestAnimationFrame(() => {
+                        Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.add('fadeUpReverse');
+                    });
+                });
+            }
+        }, 1000);
+
     }
-
-    // if(entry.isIntersecting && !gSeenEntranceAnimation){
-
-    //     requestAnimationFrame(() => {
-    //         entry.target.classList.remove('transitionInFromUpImpReverse');
-    //         requestAnimationFrame(() => {
-    //             entry.target.classList.add('transitionInFromUpImp');
-    //         });
-    //     });
-
-    //     gSeenEntranceAnimation = true;
-    // } else if(gSeenEntranceAnimation && !entry.isIntersecting && isInViewport(entry.target) && lastScrolledUp) {
-    //     gSeenEntranceAnimation = false;
-
-    //     requestAnimationFrame(() => {
-    //         entry.target.classList.remove('transitionInFromUpImp');
-    //         requestAnimationFrame(() => {
-    //             entry.target.classList.add('transitionInFromUpImpReverse');
-    //         });
-    //     });
-
-    // }
     
   });
 }
