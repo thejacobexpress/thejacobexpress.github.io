@@ -147,12 +147,6 @@ div.attributeContainer {
     opacity: 0;
     margin: 0;
 }
-.attribute4 {
-    position: absolute;
-    transform: translateY(var(--attributeTranslateY));
-    opacity: 0;
-    margin: 0;
-}
 .scrollDiv {
     position: relative;
     width: 100px;
@@ -193,6 +187,7 @@ div.attributeContainer {
 .programmerSectionContainer {
     position: relative;
     width: 100%;
+    background-color: white;
 }
 .programmingIntroductionDiv {
     margin: auto;
@@ -201,7 +196,8 @@ div.attributeContainer {
 }
 .programmingIntroductionImage {
     opacity: 1;
-    width: 40%;
+    /* width: 40%; */
+    width: 750px;
     border-radius: 5%;
 }
 .programmingIntroductionImageDiv {
@@ -259,7 +255,7 @@ div.attributeContainer {
 .usgStudiosContainer {
     position: relative;
     /* height: 300px; */
-    margin-bottom: 300px;
+    /* margin-bottom: 300px; */
 }
 .usgStudiosWrapper {
     display: flex;
@@ -270,6 +266,7 @@ div.attributeContainer {
     height: 100%;
     min-height: 400px;
     background: linear-gradient(#ffffff, #000000);
+    margin-bottom: -1px;
 }
 section.content {
     background: #000000;
@@ -348,7 +345,7 @@ section.content {
 }
 .firstFeatureText {
     position: relative;
-    top: -60px;
+    top: 25px;
     /* width: 100%;
     height: auto; */
 
@@ -383,7 +380,7 @@ section.content {
 }
 .secondFeatureText {
     position: relative;
-    top: -60px;
+    top: -30px;
     /* width: 100%;
     height: auto; */
 
@@ -420,7 +417,7 @@ section.content {
 }
 .thirdFeatureText {
     position: relative;
-    top: -40px;
+    top: -50px;
 
     text-align: left;
     font-family: Roboto;
@@ -428,10 +425,11 @@ section.content {
     color: #d0d0d0;
 }
 .endGradient {
-    margin-top: none;
+    margin-top: -1px;
     height: 100%;
     min-height: 400px;
     background: linear-gradient(#000000, #ffffff);
+    margin-bottom: 300px;
 }
 
 .programmingLanguagesContainer {
@@ -629,20 +627,36 @@ section.content {
 }
 .moreThanDiv {
     position: relative;
-    /* display: inline-block; */
+    display: inline-block;
     opacity: 0;
     left: 0;
     right: 0;
-    /* margin-inline: auto; */
+    top: -305px;
     width: fit-content;
 }
 .moreThanText {
-    /* position: absolute; */
-    margin-top: -235px;
-
     color: black;
     font-size: 70px;
     font-family: Roboto;
+}
+.roboticsIntroTextDiv {
+    position: relative;
+}
+@media only screen and (max-width: 1269px) and (min-width: 774px) {
+
+    .roboticsIntroTextDiv {
+        position: relative;
+        top: 75px
+    }
+
+}
+@media only screen and (max-width: 705px) {
+
+    .roboticsIntroTextDiv {
+        position: relative;
+        top: 150px
+    }
+
 }
 .roboticsIntroText {
     color: black;
@@ -1190,6 +1204,7 @@ section.tahomaTSAContent {
     animation-duration: 1s;
     animation-fill-mode: both;
 }
+
 .transitionInFromUpReverse {
     animation-name: transitionInFromUp;
     animation-duration: 1s;
@@ -1238,6 +1253,11 @@ section.tahomaTSAContent {
 }
 .transitionOutToDown {
     animation-name: transitionOutToDown;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+.transitionInFromUpAttribute {
+    animation-name: transitionInFromUpAttribute;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
@@ -1318,14 +1338,14 @@ section.tahomaTSAContent {
         position: absolute;
         opacity: 0;
         transform: translateY(-200px);
-        /* z-index: 100; */
+        z-index: 100;
     }
 
     to {
         position: absolute;
         opacity: 1;
         transform: translateY(-300px);
-        /* z-index: 100; */
+        z-index: 100;
     }
 
 }
@@ -1495,16 +1515,34 @@ section.tahomaTSAContent {
 @keyframes transitionInFromUp {
 
     from {
-        position: absolute;
+        /* position: absolute; */
         opacity: 0;
         margin: auto;
         transform: translateY(50px);
     }
 
     to {
-        position: absolute;
+        /* position: absolute; */
         opacity: 1;
         margin: auto;
+        transform: translateY(var(--attributeTranslateY));
+        /* transform: translateY(200px); */
+    }
+
+}
+@keyframes transitionInFromUpAttribute {
+
+    from {
+        position: absolute;
+        opacity: 0;
+        margin: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        position: absolute;
+        opacity: 1;
+        margin: 0;
         transform: translateY(var(--attributeTranslateY));
         /* transform: translateY(200px); */
     }
@@ -1547,16 +1585,13 @@ section.tahomaTSAContent {
 @keyframes transitionInFromUpMoreThan {
 
     from {
-        margin: auto;
-        margin-top: -235px;
         opacity: 0;
         transform: translateY(-100px);
     }
 
     to {
-        margin: auto;
-        margin-top: -235px;
         opacity: 1;
+        transform: translateY(0px);
     }
 
 }
@@ -1600,7 +1635,7 @@ section.tahomaTSAContent {
         position: absolute;
         opacity: 1;
         margin: 0;
-        transform: translateY(var(--attributeTranslateY));
+        transform: translateY(var(--attributeTranslateY)/*20px*/);
     }
 
     to {

@@ -6,14 +6,13 @@ const scrollText = document.getElementById("scrollText");
 const attribute1 = document.getElementById("attribute1");
 const attribute2 = document.getElementById("attribute2");
 const attribute3 = document.getElementById("attribute3");
-const attribute4 = document.getElementById("attribute4");
 
 const image1 = document.getElementById("image1");
 // const image2 = document.getElementById("image2");
 // const image3 = document.getElementById("image3");
 // const image4 = document.getElementById("image4");
 
-const attributes = [attribute1, attribute2, attribute3, attribute4];
+const attributes = [attribute1, attribute2, attribute3];
 // const images = [image1, image2, image3, image4];
 
 var selectedAttribute = attribute1;
@@ -81,7 +80,7 @@ function scrollUp() {
                 selectedAttribute.classList = [];
                 selectedAttribute.classList.add("transitionOutToDown");
                 attributes[i-1].classList = [];
-                attributes[i-1].classList.add("transitionInFromUp");
+                attributes[i-1].classList.add("transitionInFromUpAttribute");
 
                 // selectedImage.classList = [];
                 // selectedImage.classList.add("imageTransitionOutToDown");
@@ -108,6 +107,8 @@ function scrollUp() {
     }
 }
 
+const navbar = document.getElementById("navbar");
+const titleContainerContainer = document.getElementById("titleContainerContainer");
 const schoolsDiv = document.getElementById("schoolsDiv");
 const roboticsDiv = document.getElementById("roboticsDiv");
 const roboticsIntroDiv = document.getElementById("roboticsIntroDiv");
@@ -151,15 +152,16 @@ function stickSectionTitleDivs() {
         meetTheStudentDiv.style.opacity = 0;
     }
 
-    if(window.scrollY >= this.window.innerHeight + programmerSectionContainer.offsetHeight + 
+    if(window.scrollY >= navbar.offsetHeight + titleContainerContainer.offsetHeight + programmerSectionContainer.offsetHeight + 
       parseInt(window.getComputedStyle(programmerSectionContainer).marginTop) + parseInt(window.getComputedStyle(studentSectionContainer).
       marginTop) + schoolsDiv.offsetHeight + parseInt(window.getComputedStyle(roboticsDiv).marginTop) + roboticsIntroDiv.offsetHeight + 
-      roboticsImgDiv.offsetHeight/2 - this.window.innerHeight/2 + parseInt(window.getComputedStyle(tahomaLogoTextDiv).marginTop) - roboticsImgDiv.offsetHeight) {
+      roboticsImgDiv.offsetHeight/2 - this.window.innerHeight/2 + parseInt(window.getComputedStyle(tahomaLogoTextDiv).marginTop) - 
+      roboticsImgDiv.offsetHeight) {
         roboticsImgDiv.style.position = "absolute";
         roboticsImgDiv.style.top = roboticsIntroDiv.offsetHeight + parseInt(window.getComputedStyle(tahomaLogoTextDiv).marginTop) - 
         roboticsImgDiv.offsetHeight/2 + "px";
 
-    } else if(window.scrollY >= this.window.innerHeight + programmerSectionContainer.offsetHeight + 
+    } else if(window.scrollY >= navbar.offsetHeight + titleContainerContainer.offsetHeight + programmerSectionContainer.offsetHeight + 
       parseInt(window.getComputedStyle(programmerSectionContainer).marginTop) + parseInt(window.getComputedStyle(studentSectionContainer).
       marginTop) + schoolsDiv.offsetHeight + parseInt(window.getComputedStyle(roboticsDiv).marginTop) + roboticsIntroDiv.offsetHeight + 
       parseInt(window.getComputedStyle(roboticsIntroText).marginBottom) + roboticsImgDiv.offsetHeight/2 - this.window.innerHeight/2) {
@@ -305,22 +307,54 @@ const interval = setInterval(function() {
     scrollTotal = 0;
 }, 5000);
 
+const githubButtonDiv = document.getElementById("githubButtonDiv");
+
 window.addEventListener("wheel", scrolling);
 window.onscroll = (event) => {
     scrolling(event);
+    // console.log(isInViewportFix(githubButtonDiv));
 };
 
 
+// Listening events for mobile
+var startY;
+
+window.addEventListener("touchstart", function(event) {
+    startY = event.touches[0].clientY;
+});
+
+window.addEventListener("touchend", function(event) {
+    var endY = event.changedTouches[0].clientY;
+    if(startY - endY > 1) {
+        scrollDown();
+    } else {
+        scrollUp();
+    }
+});
+
 // Start of elements entering the screen and gaining animations
 
-function isInViewport(element) {
+function isInViewport(element) { // Does not consider elements that are partially visible to be in the viewport
     const rect = element.getBoundingClientRect();
     return (
-        rect.bottom >= window.innerHeight - 900 &&
-        rect.top >= window.innerHeight - element.offsetHeight - 900 // -500 does not work???
+        rect.bottom <= window.innerHeight &&
+        rect.bottom > element.offsetHeight &&
+        rect.top <= window.innerHeight - element.offsetHeight &&
+        rect.top > 0
     );
 }
 
+function isInViewportFix(element) { // Considers elements that are partially visible to be in the viewport
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.bottom <= window.innerHeight + element.offsetHeight &&
+        rect.bottom > 0 &&
+        rect.top <= window.innerHeight &&
+        rect.top > -element.offsetHeight
+    );
+}
+
+// WAITING
 var seenEntranceAnimation = [false, false, false, false, false, false];
 var isAnimating = [false, false, false, false, false, false];
 const elements = document.querySelectorAll('.notAllDiv, .usgStudiosImageDiv, .usgStudiosGroupImageDiv, .moreText, .roboticsContributorText, .roboticsGroupImgDiv');
@@ -331,10 +365,15 @@ const options = {
 }
 const callbacks = (entries) => {
   entries.forEach(entry => {
-    // console.log(seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] + " " + !entry.isIntersecting + " " + isInViewport(entry.target) + " " + lastScrolledUp);
+
     if(entry.isIntersecting && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] &&
     !isAnimating[Array.from(elements).findIndex(node => node === entry.target)]){
 
+        isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = true;
+
+        console.log("normal function!");
+
+        // Animates the element in.
         requestAnimationFrame(() => {
             entry.target.classList.remove('fadeUpReverse');
             requestAnimationFrame(() => {
@@ -342,31 +381,51 @@ const callbacks = (entries) => {
             });
         });
 
-        seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = true;
-    } else if(seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && 
-    !entry.isIntersecting && isInViewport(entry.target) && lastScrolledUp) {
-
-        requestAnimationFrame(() => {
-
-            entry.target.classList.remove('fadeUp');
-
-            requestAnimationFrame(() => {
-                entry.target.classList.add('fadeUpReverse');
-                isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = true;
-                seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = false;
-            });
-
-        });
-
+        // Checks if the user has scrolled up during the element animating in. If they have, the element animates back out.
         setTimeout(function() {
             isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = false;
-            if(isInViewport(entry.target) && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && 
+            seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = true;
+            if(!isInViewportFix(entry.target) && seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && lastScrolledUp) {
+                console.log("ViewPort function!");
+                seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = false;
+                requestAnimationFrame(() => {
+                    Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.remove('fadeUp');
+                    requestAnimationFrame(() => {
+                        Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.add('fadeUpReverse');
+                    });
+                });
+            }
+        }, 1000);
+
+        seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = true;
+    } else if(seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && 
+    !entry.isIntersecting && !isInViewport(entry.target) && lastScrolledUp) {
+
+        var currentElement = entry.target
+
+        // Animates the element out.
+        requestAnimationFrame(() => {
+            entry.target.classList.remove('fadeUp');
+            requestAnimationFrame(() => {
+                entry.target.classList.add('fadeUpReverse');
+            });
+            isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = true;
+            seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = false;
+        });
+
+        // Checks if the user has scrolled down while the element was animating out. If they have, the element animates back in.
+        setTimeout(function() {
+        //     console.log(isInViewportFix(currentElement) + " " + !seenEntranceAnimation[Array.from(elements).findIndex(node => node === currentElement)] + " " + 
+        // !lastScrolledUp)
+            isAnimating[Array.from(elements).findIndex(node => node === currentElement)] = false;
+            if(!isInViewportFix(currentElement) && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === currentElement)] && 
             !lastScrolledUp) {
                 console.log("ViewPort function!");
+                seenEntranceAnimation[Array.from(elements).findIndex(node => node === currentElement)] = true;
                 requestAnimationFrame(() => {
-                    Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.remove('fadeUpReverse');
+                    Array.from(elements)[Array.from(elements).findIndex(node => node === currentElement)].classList.remove('fadeUpReverse');
                     requestAnimationFrame(() => {
-                        Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.add('fadeUp');
+                        Array.from(elements)[Array.from(elements).findIndex(node => node === currentElement)].classList.add('fadeUp');
                     });
                 });
             }
@@ -380,6 +439,7 @@ elements.forEach(element => {
   observer.observe(element);
 });
 
+// DONE
 var aSeenEntranceAnimation = false;
 var aIsAnimating = false;
 const aElements = document.querySelectorAll('.usgStudiosImageTextDiv');
@@ -401,13 +461,13 @@ const aCallbacks = (entries) => {
         });
         
         aSeenEntranceAnimation = true;
-    } else if(aSeenEntranceAnimation && !entry.isIntersecting && isInViewport(entry.target) && lastScrolledUp) {
+    } else if(aSeenEntranceAnimation && !entry.isIntersecting && !isInViewport(entry.target) && lastScrolledUp) {
         aSeenEntranceAnimation = false;
 
+        console.log("reverse animation!")
+
         requestAnimationFrame(() => {
-
             entry.target.classList.remove('fadeIn');
-
             requestAnimationFrame(() => {
                 entry.target.classList.add('fadeInReverse');
                 aIsAnimating = true;
@@ -437,6 +497,7 @@ aElements.forEach(element => {
     aObserver.observe(element);
 });
 
+// DONE
 var bSeenEntranceAnimation = [false, false, false, false];
 var bIsAnimating = [false, false, false, false];
 const bElements = document.querySelectorAll('.githubButton, .githubButtonDiv, .moreThanText, .moreThanDiv'); // 0 = githubButtonDiv, 1 = githubButton, 2 = moreThanDiv, 3 = moreThanText
@@ -447,12 +508,12 @@ const bOptions = {
 }
 const bCallbacks = (entries) => {
   entries.forEach(entry => {
-    
+
     if((entry.target == Array.from(bElements)[0] || entry.target == Array.from(bElements)[2]) && entry.isIntersecting && 
     !bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] && 
     !bIsAnimating[Array.from(bElements).findIndex(node => node === entry.target)]){
 
-        // console.log("Animate in!");
+        bIsAnimating[Array.from(bElements).findIndex(node => node === entry.target)] = true;
 
         console.log("normal function!");
 
@@ -469,28 +530,54 @@ const bCallbacks = (entries) => {
             });
         });
 
-        bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] = true;
+        setTimeout(function() {
+            bIsAnimating[Array.from(bElements).findIndex(node => node === entry.target)] = false;
+            bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] = true;
+            if(!isInViewportFix(entry.target) && bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] && 
+            lastScrolledUp) {
+                console.log("ViewPort function!");
+                bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] = false;
+                requestAnimationFrame(() => {
+                    Array.from(bElements)[Array.from(bElements).findIndex(node => node === entry.target)].classList.remove('transitionInFromUp');
+                    requestAnimationFrame(() => {
+                        if(entry.target == Array.from(bElements)[0]) {
+                            Array.from(bElements)[Array.from(bElements).findIndex(node => node === entry.target) + 1].classList.add('transitionInFromUpButtonReverse');
+                        } else {
+                            Array.from(bElements)[Array.from(bElements).findIndex(node => node === entry.target) + 1].classList.add('transitionInFromUpMoreThanReverse');
+                        }
+                    });
+                });
+            }
+        }, 1000);
+
     } else if((entry.target == Array.from(bElements)[0] || entry.target == Array.from(bElements)[2]) && 
     bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] && !entry.isIntersecting && 
-    isInViewport(entry.target) && lastScrolledUp) {
-
-        // console.log("Animate out!");
+    !isInViewport(entry.target) && lastScrolledUp) {
 
         requestAnimationFrame(() => {
             if(entry.target == Array.from(bElements)[0]) {
-                Array.from(bElements)[Array.from(bElements).findIndex(node => node === entry.target) + 1].classList.add('transitionInFromUpButtonReverse');
+                // Array.from(bElements)[Array.from(bElements).findIndex(node => node === entry.target)].classList.remove('transitionInFromUp');
+                requestAnimationFrame(() => {
+                    Array.from(bElements)[Array.from(bElements).findIndex(node => node === entry.target) + 1].classList.add('transitionInFromUpButtonReverse');
+                })
             } else {
-                Array.from(bElements)[Array.from(bElements).findIndex(node => node === entry.target) + 1].classList.add('transitionInFromUpMoreThanReverse');
+                // Array.from(bElements)[Array.from(bElements).findIndex(node => node === entry.target)].classList.remove('transitionInFromUp');
+                requestAnimationFrame(() => {
+                    Array.from(bElements)[Array.from(bElements).findIndex(node => node === entry.target) + 1].classList.add('transitionInFromUpMoreThanReverse');
+                })
             }
             bIsAnimating[Array.from(bElements).findIndex(node => node === entry.target)] = true;
             bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] = false;
-        });
+        })
 
         setTimeout(function() {
             bIsAnimating[Array.from(bElements).findIndex(node => node === entry.target)] = false;
+            bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] = false;
             if(isInViewport(entry.target) && !bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] && 
             !lastScrolledUp) {
                 console.log("ViewPort function!");
+                bIsAnimating[Array.from(bElements).findIndex(node => node === entry.target)] = true;
+                bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] = true;
                 requestAnimationFrame(() => {
                     if(entry.target == Array.from(bElements)[0]) {
                         Array.from(bElements)[Array.from(bElements).findIndex(node => node === entry.target) + 1].classList.remove('transitionInFromUpButtonReverse');
@@ -515,8 +602,8 @@ bElements.forEach(element => {
     bObserver.observe(element);
 });
 
+// DONE
 var cSeenEntranceAnimation = false;
-var cIsAnimating = false;
 const cElements = document.querySelectorAll('.roboticsInText');
 const cOptions = {
   root: null,
@@ -525,8 +612,7 @@ const cOptions = {
 }
 const cCallbacks = (entries) => {
   entries.forEach(entry => {
-    // console.log(cSeenEntranceAnimation + " " + !entry.isIntersecting + " " + isInViewport(entry.target) + " " + lastScrolledUp);
-    if(entry.isIntersecting && !cSeenEntranceAnimation && !cIsAnimating){
+    if(entry.isIntersecting && !cSeenEntranceAnimation){
 
         requestAnimationFrame(() => {
             entry.target.classList.remove('fadeInDelay15Reverse');
@@ -536,17 +622,13 @@ const cCallbacks = (entries) => {
         });
 
         cSeenEntranceAnimation = true;
-    } else if(cSeenEntranceAnimation && !entry.isIntersecting && isInViewport(entry.target) && lastScrolledUp) {
+    } else if(cSeenEntranceAnimation && !entry.isIntersecting && !isInViewport(entry.target) && lastScrolledUp) {
         cSeenEntranceAnimation = false;
 
         requestAnimationFrame(() => {
-
             entry.target.classList.remove('fadeInDelay15');
-
             requestAnimationFrame(() => {
                 entry.target.classList.add('fadeInDelay15Reverse');
-                cIsAnimating = true;
-                cSeenEntranceAnimation = false;
             });
         });
 
@@ -558,8 +640,8 @@ cElements.forEach(element => {
     cObserver.observe(element);
 });
 
+// DONE
 var dSeenEntranceAnimation = false;
-var dIsAnimating = false;
 const dElements = document.querySelectorAll('.roboticsTheText');
 const dOptions = {
   root: null,
@@ -569,7 +651,7 @@ const dOptions = {
 const dCallbacks = (entries) => {
   entries.forEach(entry => {
     // console.log(dSeenEntranceAnimation + " " + !entry.isIntersecting + " " + isInViewport(entry.target) + " " + lastScrolledUp);
-    if(entry.isIntersecting && !dSeenEntranceAnimation && !dIsAnimating){
+    if(entry.isIntersecting && !dSeenEntranceAnimation){
 
         requestAnimationFrame(() => {
             entry.target.classList.remove('fadeInDelay3Reverse');
@@ -579,17 +661,13 @@ const dCallbacks = (entries) => {
         });
 
         dSeenEntranceAnimation = true;
-    } else if(dSeenEntranceAnimation && !entry.isIntersecting && isInViewport(entry.target) && lastScrolledUp) {
+    } else if(dSeenEntranceAnimation && !entry.isIntersecting && !isInViewport(entry.target) && lastScrolledUp) {
         dSeenEntranceAnimation = false;
 
         requestAnimationFrame(() => {
-
             entry.target.classList.remove('fadeInDelay3');
-
             requestAnimationFrame(() => {
                 entry.target.classList.add('fadeInDelay3Reverse');
-                dIsAnimating = true;
-                dSeenEntranceAnimation = false;
             });
         });
 
@@ -601,6 +679,7 @@ dElements.forEach(element => {
     dObserver.observe(element);
 });
 
+// DONE
 var eSeenEntranceAnimation = false;
 const eElements = document.querySelectorAll('.roboticsWorldText');
 const eOptions = {
@@ -621,7 +700,7 @@ const eCallbacks = (entries) => {
         });
 
         eSeenEntranceAnimation = true;
-    } else if(eSeenEntranceAnimation && !entry.isIntersecting && isInViewport(entry.target) && lastScrolledUp) {
+    } else if(eSeenEntranceAnimation && !entry.isIntersecting && !isInViewport(entry.target) && lastScrolledUp) {
         eSeenEntranceAnimation = false;
 
         requestAnimationFrame(() => {
@@ -639,7 +718,9 @@ eElements.forEach(element => {
     eObserver.observe(element);
 });
 
+// WAITING
 var fSeenEntranceAnimation = false;
+var fIsAnimating = false;
 const fElements = document.querySelectorAll('.dedicationText');
 const fOptions = {
   root: null,
@@ -650,31 +731,59 @@ const fCallbacks = (entries) => {
   entries.forEach(entry => {
 
     // console.log(fSeenEntranceAnimation + " " + !entry.isIntersecting + " " + isInViewport(entry.target) + " " + lastScrolledUp);
-    if(entry.isIntersecting && !fSeenEntranceAnimation){
-
-        // entry.target.classList.remove('fadeUpDedReverse');
-        // entry.target.classList.add('fadeUpDed');
-        // console.log("Animated!");
+    if(entry.isIntersecting && !fSeenEntranceAnimation && !fIsAnimating){
 
         requestAnimationFrame(() => {
             entry.target.classList.remove('fadeUpDedReverse');
             requestAnimationFrame(() => {
                 entry.target.classList.add('fadeUpDed');
-                console.log("Animated!");
+                fIsAnimating = true;
+                fSeenEntranceAnimation = true;
             });
+
         });
+
+        setTimeout(function() {
+            fIsAnimating = false;
+            if(!isInViewport(entry.target) && fSeenEntranceAnimation && lastScrolledUp) {
+                console.log("ViewPort function!");
+                fSeenEntranceAnimation = false;
+                requestAnimationFrame(() => {
+                    Array.from(fElements)[0].classList.remove('fadeUpDed');
+                    requestAnimationFrame(() => {
+                        Array.from(fElements)[0].classList.add('fadeUpDedReverse');
+                    });
+                });
+            }
+        }, 1000);
 
         fSeenEntranceAnimation = true;
     } else if(fSeenEntranceAnimation && !entry.isIntersecting && isInViewport(entry.target) && lastScrolledUp) {
-        fSeenEntranceAnimation = false;
 
         requestAnimationFrame(() => {
+
             entry.target.classList.remove('fadeUpDed');
+
             requestAnimationFrame(() => {
                 entry.target.classList.add('fadeUpDedReverse');
-                console.log("Animated reverse!");
+                fIsAnimating = true;
+                fSeenEntranceAnimation = false;
             });
+
         });
+
+        setTimeout(function() {
+            fIsAnimating = false;
+            if(isInViewport(entry.target) && !fSeenEntranceAnimation && !lastScrolledUp) {
+                console.log("ViewPort function!");
+                requestAnimationFrame(() => {
+                    Array.from(fElements)[0].classList.remove('fadeUpDedReverse');
+                    requestAnimationFrame(() => {
+                        Array.from(fElements)[0].classList.add('fadeUpDed');
+                    });
+                });
+            }
+        }, 1000);
 
     }
   });
@@ -684,6 +793,7 @@ fElements.forEach(element => {
     fObserver.observe(element);
 });
 
+// WAITING
 var gSeenEntranceAnimation = [false, false];
 var gIsAnimating = [false, false];
 const gElements = document.querySelectorAll('.leaderImproveText, .leaderImproveDiv'); // 0 = leaderImproveDiv, 1 = leaderImproveText
@@ -735,19 +845,19 @@ const gCallbacks = (entries) => {
             }
         }, 1000);
 
-        setTimeout(function() {
-            isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = false;
-            if(isInViewport(entry.target) && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && 
-            !lastScrolledUp) {
-                console.log("ViewPort function!");
-                requestAnimationFrame(() => {
-                    Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.remove('fadeUp');
-                    requestAnimationFrame(() => {
-                        Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.add('fadeUpReverse');
-                    });
-                });
-            }
-        }, 1000);
+        // setTimeout(function() {
+        //     isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = false;
+        //     if(isInViewport(entry.target) && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && 
+        //     !lastScrolledUp) {
+        //         console.log("ViewPort function!");
+        //         requestAnimationFrame(() => {
+        //             Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.remove('fadeUp');
+        //             requestAnimationFrame(() => {
+        //                 Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.add('fadeUpReverse');
+        //             });
+        //         });
+        //     }
+        // }, 1000);
 
     }
     
@@ -894,3 +1004,23 @@ function unselectButtons() {
 }
 
 //End of code for sliding/intro part of the Leader section
+
+//Start of code for resizing each div when the window touches it
+
+// window.addEventListener('resize', function() {
+
+// //ERRORS
+
+//     var width = window.innerWidth;
+//     var height = window.innerHeight;
+
+//     const programmingIntroductionImage = document.getElementById("programmingIntroductionImage");
+//     const programmingIntroductionImageInitWidth = programmingIntroductionImage.innerWidth;
+
+//     if(width <= programmingIntroductionImage.innerWidth) {
+//         programmingIntroductionImage.innerWidth = width;
+//     } else {
+//         programmingIntroductionImage.innerWidth = programmingIntroductionImageInitWidth;
+//     }
+
+// });

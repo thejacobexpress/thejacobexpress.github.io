@@ -13,7 +13,7 @@
         <script src="aboutScript.js" defer></script>
     </head>
     <body>
-        <nav class="navbar">
+        <nav class="navbar" id="navbar">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -25,7 +25,7 @@
             <h1 class="comingSoonText">About page coming soon...</h1>
         </div> -->
 
-        <div class="titleContainerContainer">
+        <div class="titleContainerContainer" id="titleContainerContainer">
             <div class="titleImageContainer">
                 <!-- <div class="imagesDiv"> -->
                 <img src="images\aboutPageImages\IMG_2781 - Copy.jpg" alt="" class="image1" id="image1">
@@ -50,8 +50,7 @@
                     <div class="attributeContainer">
                         <h1 class="attribute1" id="attribute1">programmer.</h1>
                         <h1 class="attribute2" id="attribute2">student.</h1>
-                        <h1 class="attribute3" id="attribute3">community member.</h1>
-                        <h1 class="attribute4" id="attribute4">leader.</h1>
+                        <h1 class="attribute3" id="attribute3">leader.</h1>
                     </div>
                 </div>
             </div>
@@ -63,14 +62,14 @@
 
         <div class="programmerSectionContainer" id="programmerSectionContainer">
             <div class="programmingIntroductionDiv">
-                <div class="programmingIntroductionImageDiv">
+                <div class="programmingIntroductionImageDiv" id="programmingIntroductionImageDiv">
                     <img src="images\aboutPageImages\programmerSectionImages\_DSF3803.jpg" alt="JacobProgramming" class="programmingIntroductionImage">
                 </div>
                 <div class="programmingIntroductionTextDiv">
                     <p class="programmingIntroductionText">
-                        <span style="color: #000000;">I've been programming for half of my life, and I still cannot get enough of it.</span> I've worked directly with Minecraft source 
-                        code, built human resource applications that allow users to manage their employees' data by navigating a user-friendly interface, 
-                        designed and programmed several video games, and more.
+                        <span style="color: #000000;">I've been programming for 9 years, and I still cannot get enough of it.</span> I've 
+                        worked with Kotlin and Android Compose to produce mobile apps, co-led the development of a video game written in GDScript 
+                        and built with Godot Engine, and strengthened my programming and leadership skills in many other ways.
                     </p>
                 </div>
                 <div class="githubButtonDiv" id="githubButtonDiv">
@@ -87,41 +86,54 @@
                             <img src="images\aboutPageImages\programmerSectionImages\Untitled_Artwork.JPEG" alt="USG Studios Logo" class="usgStudiosImage">
                         </div>
                         <div class="usgStudiosImageTextDiv">
-                            <p class="usgStudiosImageText">As a manager and developer at USG Studio, I have learned a lot about programming and how it fits into the scope of a video game while learning and growing alongside a wonderful team.</p>
+                            <p class="usgStudiosImageText">As a leader at USG Studios, I've gained invaluable leadership experience by
+                                putting the people first. Not just by making product quality one of our top priorities, but by making the team 
+                                our #1 priority.</p>
                         </div>
                         <div class="usgStudiosGroupImageDiv">
                             <img src="images\aboutPageImages\programmerSectionImages\unnamed.jpg" alt="Jacob presenting" class="usgStudiosGroupImage">
                         </div>
                         <div class="usgStudiosGroupTextDiv">
-                            <p class="usgStudiosGroupText">Working in an agile software development team early in my career has built the foundation for my skills outside of programming as well. My communication, leadership, and organizational skills have flourished from creating and leading in an environment that demands exceptional competency in all of them. Check out a few features that have resulted from me and my teammates' improvement within these skills in our game, "Untitled Space Game", or "USG".</p>
+                            <p class="usgStudiosGroupText">The members of the USG team are given the freedom to choose the discipline they
+                                are going to pursue to be what they contribute to the game, not only giving our members a kickstart in 
+                                their future careers, but also increasing the quality of USG as a by-product by allowing their passion to 
+                                flourish. Check out a few features that have resulted from this system in USG, AKA "Untitled Space Game".</p>
                         </div>
                         <div class="firstFeatureDiv">
                             <div class="firstFeatureImageDiv">
-                                <img src="images\aboutPageImages\programmerSectionImages\Screen_Recording_2024-01-28_at_12.17.49_PM.gif" alt="" class="firstFeatureImage">
+                                <img src="images\aboutPageImages\programmerSectionImages\USG website picture.png" alt="" class="firstFeatureImage">
                             </div>
                             <div class="firstFeatureTextContainer">
                                 <div class="firstfeatureTextDiv">
-                                    <p class="firstFeatureText"><span style="color: #ffffff;">An original way to journey through space.</span> Use your shotgun to navigate around an alien spaceship, finding creative ways to get to (or run from) your enemies.</p>
+                                    <p class="firstFeatureText"><span style="color: #ffffff;">Powerful music to match a compelling story.</span> 
+                                        After the player becomes a prisoner on an alien-invaded ship hell-bent on ravaging Earth, they navigate 
+                                        their escape through hoards of aliens and puzzles while gradually coming to learn that the aliens' 
+                                        intentions are more humane than Earth's. Paired with beautifully composed cinematic music, USG is 
+                                        an experience that leaves you stunned.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="secondFeatureDiv">
                             <div class="secondFeatureImageDiv">
-                                <img src="images\aboutPageImages\programmerSectionImages\IMG_1353.png" alt="" class="secondFeatureImage">
+                                <img src="images\aboutPageImages\programmerSectionImages\Untitledvideo-MadewithClipchamp2-ezgif.com-optimize.gif" alt="" class="secondFeatureImage">
                             </div>
                             <div class="secondFeatureTextContainer">
                                 <div class="secondfeatureTextDiv">
-                                    <p class="secondFeatureText"><span style="color: #ffffff;">A sharp UI that reacts to your pain.</span> Get blasted back to the past with an 80s style that's infused into the GUI—and every inch of USG.</p>
+                                    <p class="secondFeatureText"><span style="color: #ffffff;">An original way to journey through space.</span> 
+                                        Creatively nagivate around zero gravity environments using unique tools and weapons such as a magnet, 
+                                        grappling hook, minigun, and more!</p>
                                 </div>
                             </div>
                         </div>
                         <div class="thirdFeatureDiv">
                             <div class="thirdFeatureImageDiv">
-                                <img src="images\aboutPageImages\programmerSectionImages\Untitled video - Made with Clipchamp (1).gif" alt="" class="thirdFeatureImage">
+                                <img src="images\aboutPageImages\programmerSectionImages\Untitledvideo-MadewithClipchamp3-ezgif.com-video-to-gif-converter.gif" alt="" class="thirdFeatureImage">
                             </div>
                             <div class="thirdFeatureTextContainer">
                                 <div class="thirdfeatureTextDiv">
-                                    <p class="thirdFeatureText"><span style="color: #ffffff;">A weapon system built for boundless fun.</span> A scalable item system allows for an infinite number of possible gadgets. With feedback from an amazing community, we are able to reach for the stars with every new addition.</p>
+                                    <p class="thirdFeatureText"><span style="color: #ffffff;">A dynamic UI that molds to the player's 
+                                        arsenal.</span> Equipped items, statistics, and buffs attach themselves to the UI in response 
+                                        to the player's actions.</p>
                                 </div>
                             </div>
                         </div>
@@ -130,6 +142,9 @@
                             
                     </div>
                 </div>
+            </div>
+            <div class="USGProgrammingLanguageDivider">
+                
             </div>
             <div class="programmingLanguagesContainer">
                 <div class="notAllDiv">
@@ -169,8 +184,8 @@
                     <div class="tahomaTextDiv">
                         <p class="tahomaText">Through Tahoma High School, I have taken advantage of many academic opportunities
                             that have allowed me to strengthen my intellectual and interpersonal skills: taking the AP Computer Science A  
-                            exam and earning a 5, and pursuing Running Start and making the dean's list, I embody the Tahoma Bear spirit 
-                            of being future ready.
+                            exam and earning a 5, pursuing Running Start and making the dean's list, and being heavily involved in both of 
+                            Tahoma's largest student-led technology-based organizations, I embody the Tahoma Bear spirit of being future ready.
                         </p>
                     </div>
                 </div>
@@ -194,11 +209,13 @@
                             More than just involved,
                         </p>
                     </div>
-                    <p class="roboticsIntroText" id="roboticsIntroText"><span class="roboticsContributorText" id="roboticsContributorText">I am 
-                        proud to be a contributor to one of the highest achieving competitive teams</span><br> 
-                        <span class="roboticsInText" id="roboticsInText">in</span> <span class="roboticsTheText" id="roboticsTheText">the
-                        </span> <span class="roboticsWorldText" id="roboticsWorldText">world.</span>
-                    </p>
+                    <div class="roboticsIntroTextDiv" id="roboticsIntroTextDiv">
+                        <p class="roboticsIntroText" id="roboticsIntroText"><span class="roboticsContributorText" id="roboticsContributorText">I am 
+                            proud to be a contributor to one of the highest achieving competitive teams</span><br> 
+                            <span class="roboticsInText" id="roboticsInText">in</span> <span class="roboticsTheText" id="roboticsTheText">the
+                            </span> <span class="roboticsWorldText" id="roboticsWorldText">world.</span>
+                        </p>
+                    </div>
                 </div>
                 <div class="roboticsImgDiv" id="roboticsImgDiv">
                     <img src="images\aboutPageImages\studentSectionImages\file (1).png" alt="" class="roboticsImg" id="roboticsImg">
@@ -214,13 +231,15 @@
                         <img src="images\aboutPageImages\studentSectionImages\unnamed.jpg" alt="" class="roboticsGroupImg">
                     </div>
                     <div class="roboticsGroupTextDiv">
-                        <p class="roboticsGroupText">As a member of the GPT(General Programming Team), I support the development of the 
-                            scouting application, a tool that the Bear Metal team of 120 uses to easily keep track of data  
-                            about rival robots' performance at competitions around the country. This allows Bear Metal to select the 
-                            highest achieving teams as our allies in the Playoffs, effectively granting Tahoma the advantage. Alongside 
-                            teammates, I continually grow from working in a fast-paced environment with strict deadlines and high expectations 
-                            for quality. <span style="color: #000000;">At Bear Metal, I have gained early-career experience and learned 
-                            from some of the brightest minds in the country, allowing me to kickstart my career in tech.</span>
+                        <p class="roboticsGroupText">As a member of the General Programming Team at Bear Metal, I head the development of our 
+                            part-tracking application. Utilizing SQL and Kotlin Compose, the app allows members who work directly on the robot
+                            to easily and quickly read, edit, and delete part data, allowing the team of 92 to consistently stay on the same 
+                            page. Additionally, I support the development of the scouting application, a tool that the team uses to easily 
+                            keep track of data about rival robots' performance at competitions around the country. Using our app, Bear Metal 
+                            is enabled to select the highest achieving teams as its allies in the Playoffs, boosting Tahoma's advantage. I 
+                            continually grow from working in a fast-paced environment with strict deadlines and high expectations for quality. 
+                            <span style="color: #000000;">Spending my senior year at Bear Metal, I have hugely expanded my 
+                            technical skills by learning and working alongside some of the brightest minds in the country.</span>
                         </p>
                     </div>
                 </div>
@@ -260,13 +279,14 @@
                 </div>
                 <div class="tahomaTSATextDiv" id="tahomaTSATextDiv">
                     <p class="tahomaTSAText">
-                        As the vice president of the Tahoma Technology Student Association, I have facilitated high schoolers' passions 
-                        of programming, 3D modelling, digital art, music technology, story writing, and more through the development of 
-                        video games. The Tahoma TSA provides a space where students have access to guidance from experienced game designers, 
-                        convenient and detailed online resources covering critical topics within game development, a treasury of funds 
-                        to support the purchasing of cutting-edge video game development software, and other students who share their 
-                        same passions! At the Tahoma TSA, students have the unique opportunity to create and innovate alongside fellow 
-                        developers in an environment that allows them to push themselves to new heights.
+                        As the vice president of the Tahoma Technology Student Association, I have led the expansion of bringing 
+                        accessible resources to high schoolers with strong passions for programming, 3D modelling, digital art, 
+                        music technology, story writing, and more through the development of video games. The Tahoma TSA provides a space 
+                        where students have access to guidance from experienced game designers, convenient and detailed online resources 
+                        covering critical topics within game development, a treasury of funds to support the purchasing of cutting-edge 
+                        video game development software, and other students who share their same passions! At the Tahoma TSA, students have 
+                        the unique opportunity to create and innovate alongside fellow developers in an environment that allows them to push 
+                        themselves to new heights.
                     </p>
                 </div>
                 <div class="tahomaTSARowsContainer" id="tahomaTSARowsContainer">
@@ -278,7 +298,8 @@
                                 </div>
                                 <div class="firstRowTextContainer">
                                     <div class="firstRowTextDiv">
-                                        <p class="firstRowText"><span style="color: #000000;">Joining the Tahoma TSA as the vice president in my junior year, I was eager to dip my toes into every aspect of my first leadership position.</span> I took every chance I could to present to the Tahoma TSA, advise members on video game development, and manage my teams' tasks for our game, "USG".</p>
+                                        <p class="firstRowText"><span style="color: #000000;">Joining the Tahoma TSA as the vice president 
+                                            in my junior year, I was eager to dip my toes into every aspect of my first leadership position.</span> I took every chance I could to present to the Tahoma TSA, advise members on video game development, and manage my teams' tasks for our game, "USG".</p>
                                     </div>
                                 </div>
                             </div>
@@ -288,7 +309,8 @@
                                 </div>
                                 <div class="secondRowTextContainer">
                                     <div class="secondRowTextDiv">
-                                        <p class="secondRowText"><span style="color: #000000;">Stepping up to more responsibility and a larger vision for TSA in my senior year, I recruited a full executive team.</span></p>
+                                        <p class="secondRowText"><span style="color: #000000;">Stepping up to more responsibility and a 
+                                            larger vision for the Tahoma TSA in my senior year, I recruited a full executive team.</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -298,7 +320,12 @@
                                 </div>
                                 <div class="thirdRowTextContainer">
                                     <div class="thirdRowTextDiv">
-                                        <p class="thirdRowText"><span style="color: #000000;">Alongside the new executive team, we provided the most support Tahoma TSA developers have ever had:</span> an easily accessible archive of resources spanning across several video game development disciplines, the advisor system (a collection of skilled game designers within the TSA made easily accessible to all members through the Tahoma TSA Discord server and during in-person meetings), and capital supplied by the Tahoma TSA's fundraisers to fund the development of every team's game.</p>
+                                        <p class="thirdRowText"><span style="color: #000000;">The executive team now provides the most 
+                                            support Tahoma TSA developers have ever had</span>: an easily accessible archive of resources 
+                                            spanning across several video game development disciplines, the advisor system (a collection of 
+                                            skilled game designers within the TSA made easily accessible to all members through the Tahoma 
+                                            TSA Discord server and in-person meetings), and capital supplied by the Tahoma TSA's 
+                                            fundraisers to fund the development of every team's game.</p>
                                     </div>
                                 </div>
                             </div>
