@@ -150,9 +150,9 @@ div.attributeContainer {
 .scrollDiv {
     position: relative;
     width: 100px;
-    transform: translateY(175px);
     margin: auto;
     text-align: center;
+    transform: translateY(175px);
     opacity: 1;
 
     z-index: 10;
@@ -631,7 +631,6 @@ section.content {
     opacity: 0;
     left: 0;
     right: 0;
-    top: -305px;
     width: fit-content;
 }
 .moreThanText {
@@ -641,22 +640,6 @@ section.content {
 }
 .roboticsIntroTextDiv {
     position: relative;
-}
-@media only screen and (max-width: 1269px) and (min-width: 774px) {
-
-    .roboticsIntroTextDiv {
-        position: relative;
-        top: 75px
-    }
-
-}
-@media only screen and (max-width: 705px) {
-
-    .roboticsIntroTextDiv {
-        position: relative;
-        top: 150px
-    }
-
 }
 .roboticsIntroText {
     color: black;
@@ -734,19 +717,22 @@ section.content {
 }
 .dedicationDiv {
     position: relative;
+    background-color: white;
     left: 0;
     right: 0;
     margin-inline: auto;
-    margin-top: 450px;
-    height: 1px;
-    width: 1100px;
+    margin-top: 250px;
+    width: 60%/*1100px*/;
+    height: 250px;
 }
 .dedicationText {
     position: absolute;
     background: white;
     opacity:0;
-    height: 230px;
-    transform: translateY(-300px);
+    height: auto;
+    width: 100%;
+    transform: translateY(300px);
+    margin-top: 300px;
     color: rgb(0, 0, 0);
     font-size: 70px;
     font-family: Roboto;
@@ -1067,14 +1053,8 @@ section.tahomaTSAContent {
 }
 
 
-@media only screen and (max-width: 910px) {
-    .jacobDiv {
-        /* left: 0;
-        margin-left: 0; */
-    }
-}
+@media only screen and (max-device-width: 770px) {
 
-@media only screen and (max-device-width: 500px) {
     .navbar a {
         padding: 50px;
         font-size: 50px;
@@ -1091,6 +1071,354 @@ section.tahomaTSAContent {
         font-size: 100px;
     }
 
+    .scrollDiv {
+        position: absolute;
+        width: 100px;
+        left: 20%;
+        right: 20%;
+        transform: translateX(-50%, -50%);
+        transform: translateY(175px);
+        opacity: 1;
+    
+        z-index: 10;
+    }
+    .scrollText {
+        font-size: 100px;
+    }
+
+    .attributeDiv {
+        position: absolute;
+        /* overflow: hidden; */
+        display: inline;
+        max-width: 100vw;
+        max-height: 100vh;
+        width: 100%;
+        height: 500px;
+        margin-top: -151px;
+        float: left;
+    }
+
+    .programmingIntroductionTextDiv {
+        width: 70%;
+    }
+    .programmingIntroductionText {
+        font-size: 50px;
+    }
+
+    .githubButtonDiv {
+        width: 50%;
+        margin: auto;
+        text-align: center;
+    }
+    .githubButton {
+        width: 600px;
+        height: 60px;
+        font-size: 50px;
+
+        left: -20%;
+        right: -20%;
+        transform: translateX(-50%, -50%);
+
+        padding: 40px;
+        border: 8px;
+        border-style: solid;
+        border-color: black;
+        border-radius: 100px;
+    }
+
+    .usgStudiosImageDiv {
+        margin-top: 1000px;
+    }
+    .usgStudiosImage {
+        width: 800px;
+    }
+    .usgStudiosImageTextDiv {
+        width: 70%;
+        margin-bottom: 1000px;
+    }
+    .usgStudiosImageText {
+        font-size: 50px;
+    }
+    .usgStudiosGroupImage {
+        width: 750px;
+        border-radius: 5%;
+    }
+    .usgStudiosGroupTextDiv {
+        width: 70%;
+        margin-bottom: 500px;
+    }
+    .usgStudiosGroupText {
+        font-size: 50px;
+    }
+    .firstFeatureDiv {
+        margin-bottom: 300px;
+    }
+    .firstFeatureImageDiv {
+        display: block;
+    }
+    .firstFeatureImage {
+        width: 80%;
+        margin-bottom: 50px;
+    }
+    .firstFeatureTextContainer {
+        display: inline-block;
+        width: 80%;
+        padding-left: 0px;
+    }
+    .firstFeatureText {
+        font-size: 50px;
+    }
+    .secondFeatureDiv {
+        margin-bottom: 300px;
+    }
+    .secondFeatureImageDiv {
+        display: block;
+    }
+    .secondFeatureImage {
+        width: 80%;
+        margin-bottom: 50px;
+    }
+    .secondFeatureTextContainer {
+        display: inline-block;
+        width: 80%;
+        padding-left: 0px;
+    }
+    .secondfeatureTextDiv {
+        width: 100%;
+    }
+    .secondFeatureText {
+        font-size: 50px;
+    }
+    .thirdFeatureDiv {
+        margin-bottom: 800px;
+    }
+    .thirdFeatureImageDiv {
+        display: block;
+    }
+    .thirdFeatureImage {
+        width: 80%;
+        margin-bottom: 50px;
+    }
+    .thirdFeatureTextContainer {
+        display: inline-block;
+        width: 80%;
+        padding-left: 0px;
+    }
+    .thirdFeatureText {
+        font-size: 50px;
+    }
+
+    .notAllDiv {
+        width: 60%;
+        margin-bottom: 500px;
+    }
+
+    .wrapper {
+        margin-bottom: 200px;
+    }
+    .proficientInContainer {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        height: 200px;
+        margin-left: 0px;
+        /* overflow: visible; */
+        word-wrap: break-word;
+    }
+    .proficientInDiv {
+        position: relative;
+        max-width: 600px;
+        min-width: 650px;
+        width: 650px;
+        margin: auto;
+    }
+    .proficientInText {
+        color: black;
+        font-size: 70px;
+        font-family: Roboto;
+    
+        margin-left: -15px;
+    }
+    .proficientInText::after {
+        content: "...";
+    }
+    .words {
+        position: relative;
+        display: block;
+        text-align: left;
+        text-indent: 0px;
+        margin-left: 0px;
+    
+        color: black;
+        font-size: 70px;
+        font-family: Roboto;
+    }
+    .moreDiv {
+        display: flex;
+        background: #ffffff;
+        padding-top: 200px;
+        text-align: center;
+        margin: auto;
+        width: 80%;
+    }
+
+    .schoolsDiv {
+        display: block;
+        width: auto;
+    }
+    .tahomaDiv {
+        margin-bottom: 300px;
+    }
+    .tahomaImg {
+        width: 750px;
+    }
+    .tahomaTextDiv {
+        width: 80%;
+        margin: auto;
+    }
+    .tahomaText {
+        font-size: 50px;
+    }
+    .greenRiverImg {
+        width: 750px;
+    }
+    .greenRiverTextDiv {
+        width: 80%;
+        margin: auto;
+    }
+    .greenRiverText {
+        font-size: 50px;
+    }
+
+    .roboticsGroupImg {
+        width: 750px;
+    }
+    .roboticsGroupTextDiv {
+        width: 80%;
+    }
+    .roboticsGroupText {
+        font-size: 40px;
+    }
+
+    .dedicationDiv {
+        margin-top: 800px;
+        width: 60%/*1100px*/;
+    }
+
+    .scrollButtonsDiv {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .leaderButton1 {
+        border: solid;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 50%;
+        border: 0px;
+    }
+    .leaderButton2 {
+        border: solid;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 50%;
+        border: 0px;
+    }
+    .leaderButton3 {
+        border: solid;
+        padding: 15px;
+        margin: 10px;
+        border-radius: 50%;
+        border: 0px;
+    }
+    .tahomaTSATextDiv {
+        width: 80%;
+    }
+    .tahomaTSAText {
+        font-size: 50px;
+    }
+    .firstRowDiv {
+        margin-bottom: 300px;
+    }
+    .firstRowImage {
+        width: 80%;
+    }
+    .firstRowTextContainer {
+        width: 80%;
+        padding-left: 0px;
+    }
+    .firstRowTextDiv {
+        position: relative;
+        display: inline-block;
+    }
+    .firstRowText {
+        top: 0px;
+    
+        font-size: 50px;
+    }
+    .secondRowDiv {
+        margin-bottom: 300px;
+    }
+    .secondRowImage {
+        width: 80%;
+    }
+    .secondRowTextContainer {
+        width: 80%;
+        padding-left: 0px;
+    }
+    .secondRowTextDiv {
+        position: relative;
+        display: inline-block;
+    }
+    .secondRowText {
+        top: 0px;
+    
+        font-size: 50px;
+    }
+    .thirdRowDiv {
+        margin-bottom: 500px;
+    }
+    .thirdRowImage {
+        width: 80%;
+    }
+    .thirdRowTextContainer {
+        width: 80%;
+        padding-left: 0px;
+    }
+    .thirdRowTextDiv {
+        position: relative;
+        display: inline-block;
+    }
+    .thirdRowText {
+        top: 0px;
+    
+        font-size: 50px;
+    }
+
+    .leaderImproveDiv {
+        padding-bottom: 550px;
+    }
+
+    .contactDiv {
+        margin-top: 100px;
+        padding-top: 10px;
+        padding-bottom: 100px;
+        background-color: black;
+        text-align: center;
+    }
+    .getInTouchText {
+        position: relative;
+        padding: 30px;
+        color: white;
+        font-size: 50px;
+        font-family: Roboto;
+    }
+    .contactMeLink {
+        position: relative;
+        color: white;
+        font-size: 50px;
+        font-family: Roboto;
+    }
+
 }
 
 .noScroll {
@@ -1101,6 +1429,11 @@ section.tahomaTSAContent {
 
 .scrollBump {
     animation-name: scrollBump;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+}
+.scrollBumpMobile {
+    animation-name: scrollBumpMobile;
     animation-duration: 2s;
     animation-fill-mode: both;
 }
@@ -1375,6 +1708,26 @@ section.tahomaTSAContent {
         opacity: 0;
         font-family: Roboto;
         font-size: 20px;
+        transform: translateY(50px);
+    }
+}
+
+@keyframes scrollBumpMobile {
+    from {
+        opacity: 0;
+        font-family: Roboto;
+        font-size: 40px;
+        transform: translateY(-50px);
+    }
+    50% {
+        opacity: 1;
+        font-family: Roboto;
+        font-size: 40px;
+    }
+    to {
+        opacity: 0;
+        font-family: Roboto;
+        font-size: 40px;
         transform: translateY(50px);
     }
 }

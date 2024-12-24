@@ -124,6 +124,7 @@ const scrollButtonsDiv = document.getElementById("scrollButtonsDiv");
 const tahomaTSATextDiv = document.getElementById("tahomaTSATextDiv");
 const tahomaTSARowsContainer = document.getElementById("tahomaTSARowsContainer");
 const leaderImproveDiv = document.getElementById("leaderImproveDiv");
+const dedicationDiv = document.getElementById("dedicationDiv");
 
 //Also used in the sliding image leader section
 const tahomaTSAImageDiv1 = document.getElementById("tahomaTSAImageDiv1");
@@ -214,8 +215,15 @@ function stickSectionTitleDivs() {
 
     programmerSectionContainer.style.marginTop = this.window.innerHeight + "px";
     studentSectionContainer.style.marginTop = this.window.innerHeight + "px";
+    if(this.window.outerWidth <= 994) {
+        dedicationDiv.style.height = 420 + "px";
+    } else if(this.window.outerWidth <= 1107) {
+        dedicationDiv.style.height = 340 + "px";
+    } else if(this.window.outerWidth <= 1705) {
+        dedicationDiv.style.height = 250 + "px";
+    }
+
     leaderSectionContainer.style.marginTop = this.window.innerHeight + "px";
-    
 
 }
 window.addEventListener("scroll", stickSectionTitleDivs);
@@ -288,7 +296,6 @@ function scrolling(event) {
         }
     
         if(direction < 0) {
-            // console.log("Scrolling up by " + amount);
             // scrollTotal += amount;
             scrollUp();
     
@@ -302,7 +309,11 @@ const interval = setInterval(function() {
     if(scrollTotal == 0 && selectedAttribute != attributes[attributes.length-1]) {
         scrollText.classList = [];
         scrollText.offsetHeight;
-        scrollText.classList.add("scrollBump");
+        if(window.outerWidth <= 770) {
+            scrollText.classList.add("scrollBumpMobile");
+        } else {
+            scrollText.classList.add("scrollBump");
+        }
     }
     scrollTotal = 0;
 }, 5000);
@@ -758,7 +769,7 @@ const fCallbacks = (entries) => {
         }, 1000);
 
         fSeenEntranceAnimation = true;
-    } else if(fSeenEntranceAnimation && !entry.isIntersecting && isInViewport(entry.target) && lastScrolledUp) {
+    } else if(fSeenEntranceAnimation && !entry.isIntersecting && !isInViewport(entry.target) && lastScrolledUp) {
 
         requestAnimationFrame(() => {
 
