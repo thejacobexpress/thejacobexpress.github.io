@@ -215,12 +215,23 @@ function stickSectionTitleDivs() {
 
     programmerSectionContainer.style.marginTop = this.window.innerHeight + "px";
     studentSectionContainer.style.marginTop = this.window.innerHeight + "px";
-    if(this.window.outerWidth <= 994) {
-        dedicationDiv.style.height = 420 + "px";
-    } else if(this.window.outerWidth <= 1107) {
-        dedicationDiv.style.height = 340 + "px";
-    } else if(this.window.outerWidth <= 1705) {
-        dedicationDiv.style.height = 250 + "px";
+    if(window.innerWidth <= 410) {
+        dedicationDiv.style.height = "840px";
+    } else if(window.innerWidth <= 564) {
+        dedicationDiv.style.height = "750px";
+    } else if(window.innerWidth <= 573) {
+        dedicationDiv.style.height = "670px";
+    } else if(window.innerWidth <= 669) {
+        dedicationDiv.style.height = "580px";
+    } else if(window.innerWidth <= 879) {
+        dedicationDiv.style.height = "500px";
+    } else if(window.innerWidth <= 1009) {
+        dedicationDiv.style.height = "420px";
+    } else if(window.innerWidth <= 1122) {
+        dedicationDiv.style.height = "340px";
+        console.log("SIZE CHANGED")
+    } else if(window.innerWidth <= 1705) {
+        dedicationDiv.style.height = "250px";
     }
 
     leaderSectionContainer.style.marginTop = this.window.innerHeight + "px";
@@ -236,8 +247,6 @@ parseInt(scrollButtonsDiv.style.marginBottom) + tahomaTSATextDiv.offsetHeight + 
 leaderSectionContainer.style.height = tahomaTSAContainer.offsetHeight + leaderImproveDiv.offsetHeight + parseInt(leaderImproveDiv.marginBottom) + "px"; /*just equals tahomaTSAContainer height FOR NOW. If more is added on, this needs to be changed.*/
 
 
-var scrollTotal = 0;
-var lastScrolledUp = false;
 
 // function scrolling(event, changeY) {
 //     var deltaY = event.deltaY;
@@ -264,13 +273,16 @@ var lastScrolledUp = false;
 
 // }
 
+var lastScrolledUp = false;
+
 var lastScrollTop = 0;
-function scrolling(event) {
+function scrollingMouse(event) {
     var deltaY = event.deltaY;
     var direction = Math.sign(deltaY);
     var amount = Math.abs(deltaY);
 
     if(deltaY == null) {
+        // console.log("null");
         let currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
         if (currentScrollTop > lastScrollTop) {
@@ -288,21 +300,29 @@ function scrolling(event) {
 
     } else {
         if(direction > 0) {
-            // console.log("Scrolling down by " + amount);
-            scrollTotal += amount;
             scrollDown();
     
             lastScrolledUp = false;
         }
-    
         if(direction < 0) {
-            // scrollTotal += amount;
             scrollUp();
     
             lastScrolledUp = true;
         }
     }
 
+}
+
+var scrollTotal = 0;
+
+function scrolling(event) {
+    var deltaY = event.deltaY;
+    if(deltaY != null) {
+        scrollTotal += deltaY;
+        console.log(scrollTotal);
+    }
+
+    scrollingMouse(event);
 }
 
 const interval = setInterval(function() {
@@ -313,18 +333,19 @@ const interval = setInterval(function() {
             scrollText.classList.add("scrollBumpMobile");
         } else {
             scrollText.classList.add("scrollBump");
+            scrollTotal = 0;
         }
     }
-    scrollTotal = 0;
 }, 5000);
 
 const githubButtonDiv = document.getElementById("githubButtonDiv");
 
-window.addEventListener("wheel", scrolling);
-window.onscroll = (event) => {
-    scrolling(event);
-    // console.log(isInViewportFix(githubButtonDiv));
-};
+window.addEventListener("wheel", scrollingMouse);
+window.addEventListener("scroll", (event) => {
+
+    lastKnownScrollPosition = window.scrollY;
+
+});
 
 
 // Listening events for mobile
@@ -344,8 +365,10 @@ window.addEventListener("touchend", function(event) {
 });
 
 // Start of elements entering the screen and gaining animations
+//IF YOU ANIMATE ANOTHER ELEMENT YOU MUST ADD THE ELEMENT TO elementList!!!!!!!!! (Around line 900)
 
-function isInViewport(element) { // Does not consider elements that are partially visible to be in the viewport
+/** Does not consider elements that are partially visible to be in the viewport */
+function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
         rect.bottom <= window.innerHeight &&
@@ -355,7 +378,8 @@ function isInViewport(element) { // Does not consider elements that are partiall
     );
 }
 
-function isInViewportFix(element) { // Considers elements that are partially visible to be in the viewport
+/** Considers elements that are partially visible to be in the viewport */
+function isInViewportFix(element) {
     const rect = element.getBoundingClientRect();
     return (
         rect.bottom <= window.innerHeight + element.offsetHeight &&
@@ -365,7 +389,7 @@ function isInViewportFix(element) { // Considers elements that are partially vis
     );
 }
 
-// WAITING
+// DONE
 var seenEntranceAnimation = [false, false, false, false, false, false];
 var isAnimating = [false, false, false, false, false, false];
 const elements = document.querySelectorAll('.notAllDiv, .usgStudiosImageDiv, .usgStudiosGroupImageDiv, .moreText, .roboticsContributorText, .roboticsGroupImgDiv');
@@ -412,7 +436,7 @@ const callbacks = (entries) => {
     } else if(seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && 
     !entry.isIntersecting && !isInViewport(entry.target) && lastScrolledUp) {
 
-        var currentElement = entry.target
+        var currentElement = entry.target;
 
         // Animates the element out.
         requestAnimationFrame(() => {
@@ -426,11 +450,10 @@ const callbacks = (entries) => {
 
         // Checks if the user has scrolled down while the element was animating out. If they have, the element animates back in.
         setTimeout(function() {
-        //     console.log(isInViewportFix(currentElement) + " " + !seenEntranceAnimation[Array.from(elements).findIndex(node => node === currentElement)] + " " + 
-        // !lastScrolledUp)
             isAnimating[Array.from(elements).findIndex(node => node === currentElement)] = false;
-            if(!isInViewportFix(currentElement) && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === currentElement)] && 
-            !lastScrolledUp) {
+
+            console.log(isPastElement(currentElement) + " " + !seenEntranceAnimation[Array.from(elements).findIndex(node => node === currentElement)]);
+            if(isPastElement(currentElement) && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === currentElement)]) {
                 console.log("ViewPort function!");
                 seenEntranceAnimation[Array.from(elements).findIndex(node => node === currentElement)] = true;
                 requestAnimationFrame(() => {
@@ -489,7 +512,7 @@ const aCallbacks = (entries) => {
 
         setTimeout(function() {
             aIsAnimating = false;
-            if(isInViewport(entry.target) && !aSeenEntranceAnimation && !lastScrolledUp) {
+            if(isPastElement(entry.target) && !aSeenEntranceAnimation) {
                 console.log("ViewPort function!");
                 requestAnimationFrame(() => {
                     Array.from(aElements)[0].classList.remove('fadeInReverse');
@@ -584,8 +607,7 @@ const bCallbacks = (entries) => {
         setTimeout(function() {
             bIsAnimating[Array.from(bElements).findIndex(node => node === entry.target)] = false;
             bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] = false;
-            if(isInViewport(entry.target) && !bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] && 
-            !lastScrolledUp) {
+            if(isPastElement(entry.target) && isInViewport(entry.target) && !bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)]) {
                 console.log("ViewPort function!");
                 bIsAnimating[Array.from(bElements).findIndex(node => node === entry.target)] = true;
                 bSeenEntranceAnimation[Array.from(bElements).findIndex(node => node === entry.target)] = true;
@@ -730,9 +752,9 @@ eElements.forEach(element => {
 });
 
 // WAITING
-var fSeenEntranceAnimation = false;
-var fIsAnimating = false;
-const fElements = document.querySelectorAll('.dedicationText');
+var fSeenEntranceAnimation = [false, false];
+var fIsAnimating = [false, false];
+const fElements = document.querySelectorAll('.dedicationText, .dedicationDiv'); // 0 = dedicationDiv, 1 = dedicationText
 const fOptions = {
   root: null,
   rootMargin: '0px',
@@ -741,56 +763,72 @@ const fOptions = {
 const fCallbacks = (entries) => {
   entries.forEach(entry => {
 
-    // console.log(fSeenEntranceAnimation + " " + !entry.isIntersecting + " " + isInViewport(entry.target) + " " + lastScrolledUp);
-    if(entry.isIntersecting && !fSeenEntranceAnimation && !fIsAnimating){
+    if(entry.target == Array.from(fElements)[0] && entry.isIntersecting && 
+    !fSeenEntranceAnimation[Array.from(fElements).findIndex(node => node === entry.target)] && 
+    !fIsAnimating[Array.from(fElements).findIndex(node => node === entry.target)]){
+
+        console.log("animating in!");
 
         requestAnimationFrame(() => {
-            entry.target.classList.remove('fadeUpDedReverse');
+            Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target)].classList.remove('fadeUp');
+            Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target) + 1].classList.remove('fadeUpDedReverse');
             requestAnimationFrame(() => {
-                entry.target.classList.add('fadeUpDed');
-                fIsAnimating = true;
-                fSeenEntranceAnimation = true;
+                Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target)].classList.add('fadeUp'); // may not work because the text is opacity 0
+                Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target) + 1].classList.add('fadeIn');
+                fIsAnimating[Array.from(fElements).findIndex(node => node === entry.target)] = true;
+                fSeenEntranceAnimation[Array.from(fElements).findIndex(node => node === entry.target)] = true;
             });
-
         });
 
         setTimeout(function() {
-            fIsAnimating = false;
-            if(!isInViewport(entry.target) && fSeenEntranceAnimation && lastScrolledUp) {
+            fIsAnimating[Array.from(fElements).findIndex(node => node === entry.target)] = false;
+            if(!isInViewport(entry.target) && fSeenEntranceAnimation[Array.from(fElements).findIndex(node => node === entry.target)] 
+            && lastScrolledUp) {
                 console.log("ViewPort function!");
-                fSeenEntranceAnimation = false;
+                fSeenEntranceAnimation[Array.from(fElements).findIndex(node => node === entry.target)] = false;
                 requestAnimationFrame(() => {
-                    Array.from(fElements)[0].classList.remove('fadeUpDed');
+                    // Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target) + 1].classList.remove('fadeUpDed');
                     requestAnimationFrame(() => {
-                        Array.from(fElements)[0].classList.add('fadeUpDedReverse');
+                        Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target) + 1].classList.add('fadeUpDedReverse');
                     });
                 });
             }
         }, 1000);
 
-        fSeenEntranceAnimation = true;
-    } else if(fSeenEntranceAnimation && !entry.isIntersecting && !isInViewport(entry.target) && lastScrolledUp) {
+        fSeenEntranceAnimation[Array.from(fElements).findIndex(node => node === entry.target)] = true;
+    } else if(fSeenEntranceAnimation[Array.from(fElements).findIndex(node => node === entry.target)] && !entry.isIntersecting && 
+    !isInViewport(entry.target) && lastScrolledUp) {
+
+        console.log("animating out!");
 
         requestAnimationFrame(() => {
 
-            entry.target.classList.remove('fadeUpDed');
+            // Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target) + 1].classList.remove('fadeUpDed');
+            Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target) + 1].classList.remove('fadeIn');
+            //There was a dot right here when I got back to my computer one time.
 
             requestAnimationFrame(() => {
-                entry.target.classList.add('fadeUpDedReverse');
-                fIsAnimating = true;
-                fSeenEntranceAnimation = false;
+                Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target) + 1].classList.add('fadeUpDedReverse');
+                fIsAnimating[Array.from(fElements).findIndex(node => node === entry.target)] = true;
+                fSeenEntranceAnimation[Array.from(fElements).findIndex(node => node === entry.target)] = false;
             });
 
         });
 
+        
         setTimeout(function() {
-            fIsAnimating = false;
-            if(isInViewport(entry.target) && !fSeenEntranceAnimation && !lastScrolledUp) {
+            console.log(isPastElement(entry.target) + " " + 
+        !fSeenEntranceAnimation[Array.from(fElements).findIndex(node => node === entry.target)]);
+            fIsAnimating[Array.from(fElements).findIndex(node => node === entry.target)] = false;
+            if(isPastElement(entry.target) && !fSeenEntranceAnimation[Array.from(fElements).findIndex(node => node === entry.target)]) {
                 console.log("ViewPort function!");
                 requestAnimationFrame(() => {
-                    Array.from(fElements)[0].classList.remove('fadeUpDedReverse');
+                    // Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target) + 1].classList.remove('fadeUpDedReverse');
+                    Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target)].classList.remove('fadeUp');
+                    Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target) + 1].classList.remove('fadeUpDedReverse');
                     requestAnimationFrame(() => {
-                        Array.from(fElements)[0].classList.add('fadeUpDed');
+                        Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target)].classList.add('fadeUp');
+                        Array.from(fElements)[Array.from(fElements).findIndex(node => node === entry.target) + 1].classList.add('fadeIn');
                     });
                 });
             }
@@ -878,6 +916,42 @@ let gObserver = new IntersectionObserver(gCallbacks, gOptions);
 gElements.forEach(element => {
     gObserver.observe(element);
 });
+
+const elementList = [document.getElementById("notAllDiv"), document.getElementById("usgStudiosImageDiv"), 
+document.getElementById("usgStudiosGroupImageDiv"), document.getElementById("moreText"), document.getElementById("roboticsContributorText"),
+document.getElementById("roboticsGroupImgDiv"), document.getElementById("usgStudiosImageTextDiv"), document.getElementById("githubButton"), 
+document.getElementById("githubButtonDiv"), document.getElementById("moreThanText"), document.getElementById("moreThanDiv"), 
+document.getElementById("roboticsInText"), document.getElementById("roboticsTheText"), document.getElementById("roboticsWorldText"), 
+document.getElementById("dedicationText"), document.getElementById("dedicationDiv"), document.getElementById("leaderImproveText"), document.getElementById("leaderImproveDiv")];
+
+var distanceList = [];
+for(e of elementList) {
+    distanceList.push(e.getBoundingClientRect().top);
+}
+
+function isPastElement(element) {
+
+    if(element == null) {
+        console.log("Element is null!");
+        return false;
+    }
+
+    let elementDistance;
+
+    elementList.forEach((value, index) => {
+        if(value == element) {
+            elementDistance = distanceList[index];
+        }
+    });
+
+    if(elementDistance + (element.offsetHeight * 0.9) < window.scrollY) { // Replicates the threshold for the above functions.
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
 // End of elements entering the screen and gaining animations
 
 //All code for sliding/intro part of the Leader section

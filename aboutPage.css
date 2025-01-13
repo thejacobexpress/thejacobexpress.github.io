@@ -717,22 +717,24 @@ section.content {
 }
 .dedicationDiv {
     position: relative;
+    opacity: 0;
     background-color: white;
     left: 0;
     right: 0;
     margin-inline: auto;
-    margin-top: 250px;
+    margin-top: 250px; /*Also set in code, ~line 218*/
     width: 60%/*1100px*/;
     height: 250px;
 }
 .dedicationText {
     position: absolute;
     background: white;
-    opacity:0;
+    opacity: 1;
     height: auto;
     width: 100%;
-    transform: translateY(300px);
-    margin-top: 300px;
+    /* transform: translateY(300px); */
+    margin-top: -5px;
+    /* top: 600px; */
     color: rgb(0, 0, 0);
     font-size: 70px;
     font-family: Roboto;
@@ -1440,6 +1442,7 @@ section.tahomaTSAContent {
 .fadeUp {
     animation-name: fadeUp;
     animation-duration: 1s;
+    animation-fill-mode: both;
     animation-fill-mode: forwards;
 }
 .fadeUpDed {
@@ -1670,14 +1673,14 @@ section.tahomaTSAContent {
     from {
         position: absolute;
         opacity: 0;
-        transform: translateY(-200px);
+        transform: translateY(95px);
         z-index: 100;
     }
 
     to {
         position: absolute;
         opacity: 1;
-        transform: translateY(-300px);
+        transform: translateY(-5px);
         z-index: 100;
     }
 
