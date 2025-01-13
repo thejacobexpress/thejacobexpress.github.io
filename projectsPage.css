@@ -1,6 +1,8 @@
-html {
+html, body {
     overflow-x: hidden;
     overflow-anchor: none;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar {
@@ -227,6 +229,26 @@ html {
     animation-fill-mode: both;
 }
 
+.contactDiv {
+    margin-top: 500px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    background-color: black;
+    text-align: center;
+}
+.getInTouchText {
+    position: relative;
+    color: white;
+    font-size: 20px;
+    font-family: Roboto;
+}
+.contactMeLink {
+    position: relative;
+    color: white;
+    font-size: 20px;
+    font-family: Roboto;
+}
+
 @media only screen and (max-device-width: 500px) {
     .navbar a {
         padding: 50px;
@@ -400,6 +422,27 @@ html {
         border-color: black;
         border-radius: 100px;
         background-color: white;
+    }
+    
+    .contactDiv {
+        margin-top: 100px;
+        padding-top: 10px;
+        padding-bottom: 100px;
+        background-color: black;
+        text-align: center;
+    }
+    .getInTouchText {
+        position: relative;
+        padding: 30px;
+        color: white;
+        font-size: 50px;
+        font-family: Roboto;
+    }
+    .contactMeLink {
+        position: relative;
+        color: white;
+        font-size: 50px;
+        font-family: Roboto;
     }
 
 }
