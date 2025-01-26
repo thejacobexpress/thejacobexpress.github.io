@@ -923,11 +923,12 @@ document.getElementById("usgStudiosGroupImageDiv"), document.getElementById("mor
 document.getElementById("roboticsGroupImgDiv"), document.getElementById("usgStudiosImageTextDiv"), document.getElementById("githubButton"), 
 document.getElementById("githubButtonDiv"), document.getElementById("moreThanText"), document.getElementById("moreThanDiv"), 
 document.getElementById("roboticsInText"), document.getElementById("roboticsTheText"), document.getElementById("roboticsWorldText"), 
-document.getElementById("dedicationText"), document.getElementById("dedicationDiv"), document.getElementById("leaderImproveText"), document.getElementById("leaderImproveDiv")];
+document.getElementById("dedicationText"), document.getElementById("dedicationDiv"), document.getElementById("leaderImproveText"), 
+document.getElementById("leaderImproveDiv")];
 
 var distanceList = [];
-for(e of elementList) {
-    // distanceList.push(e.getBoundingClientRect().top); //Working on this!!!
+for(var e of elementList) {
+    distanceList = [...distanceList, e.getBoundingClientRect().top];
 }
 
 function isPastElement(element) {
