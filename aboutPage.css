@@ -812,12 +812,14 @@ section.content {
     text-align: center;
     overflow: hidden;
     display: inline-block;
+    bottom: 0;
 }
 .tahomaTSALowerImageDiv2 {
     /* display: inline-block; */
+    position: relative;
 }
 .tahomaTSAImage2 {
-    width: 1000px;
+    width: 770px;
     border-radius: 5%;
 }
 .tahomaTSAImageDiv3 { /*Width is 500px*/
@@ -834,9 +836,10 @@ section.content {
 }
 .tahomaTSALowerImageDiv3 {
     /* display: inline-block; */
+    position: relative;
 }
 .tahomaTSAImage3 {
-    width: 1000px;
+    width: 770px;
     border-radius: 5%;
 }
 .scrollButtonsDiv {

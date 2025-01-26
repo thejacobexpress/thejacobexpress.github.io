@@ -207,6 +207,7 @@ function stickSectionTitleDivs() {
 
     tahomaTSAScrollingDiv.style.height = (Math.max(tahomaTSALowerImageDiv1.offsetHeight, tahomaTSALowerImageDiv2.offsetHeight, 
     tahomaTSALowerImageDiv3.offsetHeight) + "px");
+    // tahomaTSALowerImageDiv1.style.bottom = (-(tahomaTSAScrollingDiv.style.height - tahomaTSALowerImageDiv1.style.height)) + "px";
     tahomaTSAContainer.style.height = tahomaTSAScrollingDiv.offsetHeight + scrollButtonsDiv.offsetHeight + 
     parseInt(scrollButtonsDiv.style.marginBottom) + tahomaTSATextDiv.offsetHeight + tahomaTSARowsContainer.offsetHeight + "px"/* + margin that comes before rows of pictures/descriptions + height of rows of pictures/descriptions*/;
     leaderSectionContainer.style.height = tahomaTSAContainer.offsetHeight + leaderImproveDiv.offsetHeight + "px"; /*just equals tahomaTSAContainer height FOR NOW. If more is added on, this needs to be changed.*/
@@ -926,7 +927,7 @@ document.getElementById("dedicationText"), document.getElementById("dedicationDi
 
 var distanceList = [];
 for(e of elementList) {
-    distanceList.push(e.getBoundingClientRect().top);
+    // distanceList.push(e.getBoundingClientRect().top); //Working on this!!!
 }
 
 function isPastElement(element) {
