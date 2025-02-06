@@ -940,7 +940,7 @@ section.tahomaTSAContent {
 }
 .firstRowText {
     position: relative;
-    top: -60px;
+    top: -40px;
     /* width: 100%;
     height: auto; */
 
@@ -975,7 +975,7 @@ section.tahomaTSAContent {
 }
 .secondRowText {
     position: relative;
-    top: -150px;
+    top: -110px;
     /* width: 100%;
     height: auto; */
 
@@ -1010,7 +1010,7 @@ section.tahomaTSAContent {
 }
 .thirdRowText {
     position: relative;
-    top: -50px;
+    top: -10px;
 
     text-align: left;
     font-family: Roboto;
@@ -1375,7 +1375,7 @@ section.tahomaTSAContent {
         display: inline-block;
     }
     .secondRowText {
-        top: 0px;
+        top: 100px;
     
         font-size: 50px;
     }
