@@ -405,8 +405,35 @@ const callbacks = (entries) => {
     if(entry.isIntersecting && !seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] &&
     !isAnimating[Array.from(elements).findIndex(node => node === entry.target)]){
 
-        entry.target.entranceAnimation();
+        isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = true;
 
+        console.log("normal function!");
+
+        // Animates the element in.
+        requestAnimationFrame(() => {
+            entry.target.classList.remove('fadeUpReverse');
+            requestAnimationFrame(() => {
+                entry.target.classList.add('fadeUp');
+            });
+        });
+
+        // Checks if the user has scrolled up during the element animating in. If they have, the element animates back out.
+        setTimeout(function() {
+            isAnimating[Array.from(elements).findIndex(node => node === entry.target)] = false;
+            seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = true;
+            if(!isInViewportFix(entry.target) && seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && lastScrolledUp) {
+                console.log("ViewPort function!");
+                seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = false;
+                requestAnimationFrame(() => {
+                    Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.remove('fadeUp');
+                    requestAnimationFrame(() => {
+                        Array.from(elements)[Array.from(elements).findIndex(node => node === entry.target)].classList.add('fadeUpReverse');
+                    });
+                });
+            }
+        }, 1000);
+
+        seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] = true;
     } else if(seenEntranceAnimation[Array.from(elements).findIndex(node => node === entry.target)] && 
     !entry.isIntersecting && !isInViewport(entry.target) && lastScrolledUp) {
 
@@ -899,48 +926,6 @@ document.getElementById("roboticsInText"), document.getElementById("roboticsTheT
 document.getElementById("dedicationText"), document.getElementById("dedicationDiv"), document.getElementById("leaderImproveText"), 
 document.getElementById("leaderImproveDiv")];
 
-HTMLElement.prototype.entranceAnimation = function(){}
-
-for(var i = 0; i < 6; i++) {
-    elementList[i].entranceAnimation = function() {
-        console.log("function 1!");
-    
-        isAnimating[Array.from(elements).findIndex(node => node === elementList[i])] = true;
-    
-        console.log("normal function!");
-    
-        // Animates the element in.
-        requestAnimationFrame(() => {
-            elementList[i].classList.remove('fadeUpReverse');
-            requestAnimationFrame(() => {
-                elementList[i].classList.add('fadeUp');
-            });
-        });
-    
-        // Checks if the user has scrolled up during the element animating in. If they have, the element animates back out.
-        setTimeout(function() {
-            isAnimating[Array.from(elements).findIndex(node => node === elementList[i])] = false;
-            seenEntranceAnimation[Array.from(elements).findIndex(node => node === elementList[i])] = true;
-            if(!isInViewportFix(elementList[1]) && seenEntranceAnimation[Array.from(elements).findIndex(node => node === elementList[1])] && lastScrolledUp) {
-                console.log("ViewPort function!");
-                seenEntranceAnimation[Array.from(elements).findIndex(node => node === elementList[i])] = false;
-                requestAnimationFrame(() => {
-                    Array.from(elements)[Array.from(elements).findIndex(node => node === elementList[i])].classList.remove('fadeUp');
-                    requestAnimationFrame(() => {
-                        Array.from(elements)[Array.from(elements).findIndex(node => node === elementList[i])].classList.add('fadeUpReverse');
-                    });
-                });
-            }
-        }, 1000);
-    
-        seenEntranceAnimation[Array.from(elements).findIndex(node => node === elementList[i])] = true;
-    }
-}
-
-elementList[0].entranceAnimation = function() {
-    console.log("function 0!");
-}
-
 var distanceList = [];
 for(var e of elementList) {
     distanceList = [...distanceList, e.getBoundingClientRect().top];
@@ -967,15 +952,6 @@ function isPastElement(element) {
         return false;
     }
 
-}
-
-//Going to check all elements if the user has scrolled passed them. If they have, animate them in. If they aren't, animate them out.
-function updateElements() {
-    for(e in elementList) {
-        if(isPastElement(e)) {
-            
-        }
-    }
 }
 
 // End of elements entering the screen and gaining animations
