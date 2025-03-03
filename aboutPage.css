@@ -2040,6 +2040,7 @@ section.tahomaTSAContent {
         position: absolute;
         left: 0;
         right: 0;
+        height: 0;
         margin-left: auto;
         margin-right: auto;
         transform: translateX(0px);
@@ -2050,6 +2051,7 @@ section.tahomaTSAContent {
         position: absolute;
         left: 0;
         right: 0;
+        height: 0;
         margin-left: auto;
         margin-right: auto;
         transform: translateX(-1000px);
@@ -2072,6 +2074,7 @@ section.tahomaTSAContent {
         opacity: 1;
         left: 0;
         right: 0;
+        height: 0;
         margin-left: auto;
         margin-right: auto;
         position: absolute;
@@ -2082,6 +2085,7 @@ section.tahomaTSAContent {
         opacity: 0;
         left: 0;
         right: 0;
+        height: 0;
         margin-left: auto;
         margin-right: auto;
         position: absolute;

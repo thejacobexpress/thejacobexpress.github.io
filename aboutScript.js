@@ -207,7 +207,6 @@ function stickSectionTitleDivs() {
 
     tahomaTSAScrollingDiv.style.height = (Math.max(tahomaTSALowerImageDiv1.offsetHeight, tahomaTSALowerImageDiv2.offsetHeight, 
     tahomaTSALowerImageDiv3.offsetHeight) + "px");
-    // tahomaTSALowerImageDiv1.style.bottom = (-(tahomaTSAScrollingDiv.style.height - tahomaTSALowerImageDiv1.style.height)) + "px";
     tahomaTSAContainer.style.height = tahomaTSAScrollingDiv.offsetHeight + scrollButtonsDiv.offsetHeight + 
     parseInt(scrollButtonsDiv.style.marginBottom) + tahomaTSATextDiv.offsetHeight + tahomaTSARowsContainer.offsetHeight + "px"/* + margin that comes before rows of pictures/descriptions + height of rows of pictures/descriptions*/;
     leaderSectionContainer.style.height = tahomaTSAContainer.offsetHeight + leaderImproveDiv.offsetHeight + "px"; /*just equals tahomaTSAContainer height FOR NOW. If more is added on, this needs to be changed.*/
@@ -236,6 +235,8 @@ function stickSectionTitleDivs() {
     }
 
     leaderSectionContainer.style.marginTop = this.window.innerHeight + "px";
+
+    console.log(window.scrollY);
 
 }
 window.addEventListener("scroll", stickSectionTitleDivs);
@@ -929,6 +930,7 @@ document.getElementById("leaderImproveDiv")];
 var distanceList = [];
 for(var e of elementList) {
     distanceList = [...distanceList, e.getBoundingClientRect().top];
+    console.log(e.className + ": " + (e.getBoundingClientRect().top + e.offsetHeight*0.9));
 }
 
 function isPastElement(element) {
@@ -977,8 +979,32 @@ const leaderSections = [tahomaTSAImageDiv1, tahomaTSAImageDiv2, tahomaTSAImageDi
 
 var selectedSection = tahomaTSAImageDiv1;
 
+//Come back to this later.
 const intervalImages = setInterval(function() {
+    // var pastHeight = parseInt(tahomaTSAScrollingDiv.style.height);
+
     rightArrow();
+
+    setTimeout(function() {
+        tahomaTSAScrollingDiv.style.height = (Math.max(tahomaTSALowerImageDiv1.offsetHeight, tahomaTSALowerImageDiv2.offsetHeight, 
+            tahomaTSALowerImageDiv3.offsetHeight) + "px");
+    }, 1000);
+
+    // var difference = Math.max(tahomaTSALowerImageDiv1.offsetHeight, tahomaTSALowerImageDiv2.offsetHeight, 
+    //     tahomaTSALowerImageDiv3.offsetHeight) - pastHeight;
+
+    // console.log(difference)
+
+    // var variable = pastHeight;
+    // const intervalId = setInterval(() => {
+    //     variable += difference/100;
+    //     tahomaTSAScrollingDiv.style.height = variable + "px";
+      
+    //     if (variable >= difference) {
+    //         clearInterval(intervalId);
+    //     }
+    // }, 10);
+
 }, 5000);
 
 function rightArrow() {
